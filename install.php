@@ -78,15 +78,34 @@ $stmt->execute();
 $stmt->closeCursor();
 
 //creating categories table
-//$stmt=$conn->prepare("DROP TABLE IF EXISTS Tblcategories;
-//CREATE TABLE Tblcategories
-//(CategoryID VARCHAR(2) NOT NULL,
-//Gender VARCHAR(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//Type VARCHAR(20) NOT NULL
-//)");
-//$stmt->execute();
-//$stmt->closeCursor();
+$stmt=$conn->prepare("DROP TABLE IF EXISTS Tblcategories;
+CREATE TABLE Tblcategories
+(Gender VARCHAR(2) NOT NULL,
+CategoryID VARCHAR(2) NOT NULL,
+Type VARCHAR(20) NOT NULL
+)");
+$stmt->execute();
+$stmt->closeCursor();
 
+//creating house table
+$stmt=$conn->prepare("DROP TABLE IF EXISTS Tblhouse;
+CREATE TABLE Tblhouse
+(HouseID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Hsm VARCHAR(40) NOT NULL,
+Matron VARCHAR(40) NOT NULL,
+Name VARCHAR(20) NOT NULL
+)");
+$stmt->execute();
+$stmt->closeCursor();
+
+//creating email table
+$stmt=$conn->prepare("DROP TABLE IF EXISTS Tblemail;
+CREATE TABLE Tblemail
+(EmailID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Address VARCHAR(30) NOT NULL
+)");
+$stmt->execute();
+$stmt->closeCursor();
 
 
 ?>
