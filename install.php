@@ -15,8 +15,10 @@ $stmt->execute();
 $stmt->closeCursor();
 $hashed_password = password_hash("password", PASSWORD_DEFAULT); //sets the default password and hashes it before it is inserted into the table
 $stmt = $conn->prepare("INSERT INTO Tblusers(UserID,Forename,Surname,Username,Password,Role)VALUES
-(NULL,'Sophie','Bourne','Sbourne',:hp,1) --Inserting default customer data
-");
+(NULL,'Sophie','Bourne','Sbourne',:hp,1), 
+(NULL,'Christina','Wood','Secretary',:hp,3),
+(NULL,'Jane','Smith','Jsmith',:hp,2)
+");//inserts all of the default data into the users table
 $stmt->bindParam(':hp', $hashed_password); //makes the password in the default data the hashed password
 $stmt->execute();
 $stmt->closeCursor();
