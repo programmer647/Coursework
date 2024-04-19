@@ -1,11 +1,14 @@
 <?php
 session_start();
-//print_r($_POST);
-include_once ("connection.php");
-array_map("htmlspecialchars", $_POST);
-$stmt = $conn->prepare("SELECT * FROM tblusers WHERE Username=:Username;" );
+include_once ("connection.php"); //Allows the page to connect to the database
+array_map("htmlspecialchars", $_POST); //Removes the impact of special characters to ensure that the page is secure by 
+//preventing SQL injection
+$stmt = $conn->prepare("SELECT * FROM tblusers WHERE Username=:Username;" ); 
 $stmt->bindParam(':Username', $_POST['Username']);
 $stmt->execute();
+echo($_POST['Username']);
+echo($_POST['Pword']);
+
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 { 
     $hashed = $row['Password'];
@@ -17,8 +20,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
         echo("Logged in");
     }else{
         echo("Incorrect password");
-        //header('Location: login.php');
     }
 }
+
 $conn=null;
 ?>
+
+
+
