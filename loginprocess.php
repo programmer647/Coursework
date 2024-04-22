@@ -6,22 +6,31 @@ array_map("htmlspecialchars", $_POST); //Removes the impact of special character
 $stmt = $conn->prepare("SELECT * FROM tblusers WHERE Username=:Username;" ); 
 $stmt->bindParam(':Username', $_POST['Username']);
 $stmt->execute();
-echo($_POST['Username']);
-echo($_POST['Pword']);
 
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-{ 
-    $hashed = $row['Password'];
-    $attempt= $_POST['Pword'];
-    if(password_verify($attempt, $hashed)){
-        $_SESSION['name']=$row['Username'];
-        $_SESSION['role']=$row['Role'];
-        $_SESSION['id']=$row['UserID'];
-        echo("Logged in");
-    }else{
-        echo("Incorrect password");
+
+if ($stmt->rowCount()>0){
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+    { 
+        $hashed = $row['Password'];
+        $attempt= $_POST['Pword'];
+        if(password_verify($attempt, $hashed)){
+            $_SESSION['name']=$row['Username'];
+            $_SESSION['role']=$row['Role'];
+            $_SESSION['id']=$row['UserID'];
+            echo("Logged in");
+        }else{
+            echo("Incorrect password");
+        }
+
+
     }
 }
+
+else{
+    print("Incorrect username");
+}
+
 
 $conn=null;
 ?>
