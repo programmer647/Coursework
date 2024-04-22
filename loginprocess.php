@@ -3,14 +3,16 @@ session_start();
 include_once ("connection.php"); //Allows the page to connect to the database
 array_map("htmlspecialchars", $_POST); //Removes the impact of special characters to ensure that the page is secure by 
 //preventing SQL injection
-$stmt = $conn->prepare("SELECT * FROM tblusers WHERE Username=:Username;" ); 
+$stmt = $conn->prepare("SELECT * FROM tblusers WHERE Username=:Username;" ); //selects the rows where the username is equal to the 
+//username inputted by the user
 $stmt->bindParam(':Username', $_POST['Username']);
 $stmt->execute();
 
-
+//This if statement checks if the SQL statement returned anything
 if ($stmt->rowCount()>0){
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))//if the SQL statement returns a username it checks it against the password entered 
+    //by the user. If it matches with the password stored in the table then the user is logged in 
     { 
         $hashed = $row['Password'];
         $attempt= $_POST['Pword'];
@@ -20,7 +22,7 @@ if ($stmt->rowCount()>0){
             $_SESSION['id']=$row['UserID'];
             echo("Logged in");
         }else{
-            echo("Incorrect password");
+            echo("Incorrect password");//prints "incorrect password" if the password is incorrect
         }
 
 
@@ -28,7 +30,7 @@ if ($stmt->rowCount()>0){
 }
 
 else{
-    print("Incorrect username");
+    print("Incorrect username");//prints if the username isn't in the table
 }
 
 
