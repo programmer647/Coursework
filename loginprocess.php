@@ -17,9 +17,9 @@ if ($stmt->rowCount()>0){
         $hashed = $row['Password'];
         $attempt= $_POST['Pword'];
         if(password_verify($attempt, $hashed)){
-            $_SESSION['name']=$row['Username'];
-            $_SESSION['role']=$row['Role'];
-            $_SESSION['id']=$row['UserID'];
+            $_SESSION['name']=$row['Username'];//sets the session variable name to the user's username
+            $_SESSION['role']=$row['Role'];//sets the session variable role
+            $_SESSION['id']=$row['UserID'];//sets the session variable ID
             echo("Logged in");
         }else{
             echo("Incorrect password");//prints "incorrect password" if the password is incorrect
