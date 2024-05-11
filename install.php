@@ -26,7 +26,8 @@ $stmt->closeCursor();
 //creating orders table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblorders;
 CREATE TABLE Tblorders
-(Total FLOAT (5,2) NOT NULL,
+(OrderID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Total FLOAT (5,2) NOT NULL,
 UserID INT(6) NOT NULL,
 Deliveryoption TINYINT(1) NOT NULL,
 AddressLine1 VARCHAR(40) NOT NULL,
