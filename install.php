@@ -63,8 +63,8 @@ $stmt->execute();
 $stmt->closeCursor();
 
 //creating uniform table
-$stmt=$conn->prepare("DROP TABLE IF EXISTS Tblonlineorders;
-CREATE TABLE Tblonlineorders
+$stmt=$conn->prepare("DROP TABLE IF EXISTS Tbluniform;
+CREATE TABLE Tbluniform
 (UniformID INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 TypeID VARCHAR(2) NOT NULL,
 HouseID INT(2) NOT NULL,

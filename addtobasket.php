@@ -26,12 +26,25 @@ if (!isset($_SESSION['orderid']))
     $_SESSION['orderid']=$row['MAX(OrderID)'];//sets the session orderid to the new one which has been created
     echo($_SESSION['orderid']);//prints the new orderid so that I can check that the code is working (this will be removed later)
     }
-    
 }
+
+$uniformid=$_POST['barcode'];//retrieves the barcode entered on the previous page and sets a variable for it
+echo($uniformid);
+
+$stmt=$conn->prepare("SELECT * FROM tbluniform where UniformID=$uniformid");//selects the item where the uniformID is the one that was 
+//represented by the barcde
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+    {
+    $type=$row['TypeID'];//sets the type of the uniform to the variable. This is needed to check the price of the item and to get the name of it
+    echo($type);
+    }
+
+$stmt=$conn->prepare("SELECT * FROM tbltype where TypeID=:type");//selects the rows of the table where the typeID is equal to the typID searched for
+$stmt->bindParam(':type',$type);
+$stmt->execute();
 
 
 ?>
-
-
 
 
