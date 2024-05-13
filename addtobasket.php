@@ -43,6 +43,30 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 $stmt=$conn->prepare("SELECT * FROM tbltype where TypeID=:type");//selects the rows of the table where the typeID is equal to the typID searched for
 $stmt->bindParam(':type',$type);
 $stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+    {
+    $price=$row['Price'];
+    $name=$row['Name'];
+    $size=$row['Size'];
+    echo($type);
+    }
+
+$quantity=0
+
+$stmt=$conn->prepare("SELECT * FROM tblbasket WHERE OrderID=$_SESSION['orderid'] and UniformID=$uniformid");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+{
+    if $row['Quantity']>0{
+        $quantity=$quantity+1
+    }
+}
+
+$stmt=$conn->prepare("INSERT INTO tblbasket(OrderID,UniformID,Quantity) VALUES (:orderid,:uniformid,:quantity");
+$stmt->bindParam(':orderid',$_SESSION['orderid'])
+$stmt->bindParam(':uniformid',$uniformid)
+$stmt->bindParam(':quantity',$quantity)
+$stmt->execute();
 
 
 ?>
