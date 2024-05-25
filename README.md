@@ -3,11 +3,11 @@
 
 
 Currently doing:
-
+code to insert uniform items into tables
 
 
 Next steps:
-get uniform booklet and write code to insert default items into table
+
 
 
 Things to ask for help about:
