@@ -72,12 +72,24 @@ Stock INT(2) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
+$stmt = $conn->prepare("INSERT INTO Tbluniform(UniformID,TypeID,HouseID,Stock)VALUES
+(NULL,'Sophie','Bourne','Sbourne',:hp,1), 
+(NULL,'Christina','Wood','Secretary',:hp,3),
+(NULL,'Jane','Smith','Jsmith',:hp,2)
+");//inserts all of the default data into the users table
+$stmt->bindParam(':hp', $hashed_password); //makes the password in the default data the hashed password
+$stmt->execute();
+$stmt->closeCursor();
+
+
+
 
 //creating type table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tbltype;
 CREATE TABLE Tbltype
-(Size VARCHAR(5) NOT NULL,
-TypeID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+(TypeID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Size1 VARCHAR(10) NOT NULL,
+Size2 VARCHAR(10) NOT NULL,
 Name VARCHAR(20) NOT NULL,
 Price FLOAT(5,2) NOT NULL,
 CategoryID INT(2) NOT NULL,
@@ -86,6 +98,18 @@ New BOOLEAN NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
+$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size2,Size2,Name,Price,CategoryID,Photo,New)VALUES
+(NULL,'Sophie','Bourne','Sbourne',:hp,1), 
+(NULL,'Christina','Wood','Secretary',:hp,3),
+(NULL,'Jane','Smith','Jsmith',:hp,2)
+");//inserts all of the default data into the users table
+$stmt->bindParam(':hp', $hashed_password); //makes the password in the default data the hashed password
+$stmt->execute();
+$stmt->closeCursor();
+
+
+
+
 
 //creating categories table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblcategories;
