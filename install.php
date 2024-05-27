@@ -23,6 +23,7 @@ $stmt->bindParam(':hp', $hashed_password); //makes the password in the default d
 $stmt->execute();
 $stmt->closeCursor();
 
+
 //creating orders table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblorders;
 CREATE TABLE Tblorders
@@ -62,6 +63,7 @@ Quantity INT(2) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 
+
 //creating uniform table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tbluniform;
 CREATE TABLE Tbluniform
@@ -73,9 +75,13 @@ Stock INT(2) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 $stmt = $conn->prepare("INSERT INTO Tbluniform(UniformID,TypeID,HouseID,Stock)VALUES
-(NULL,'Sophie','Bourne','Sbourne',:hp,1), 
-(NULL,'Christina','Wood','Secretary',:hp,3),
-(NULL,'Jane','Smith','Jsmith',:hp,2)
+(NULL,1,1,4), 
+(NULL,1,2,10), 
+(NULL,2,1,5), 
+(NULL,3,3,2),
+(NULL,3,1,9),
+(NULL,5,2,3),  
+(NULL,6,3,6)
 ");//inserts all of the default data into the users table
 $stmt->bindParam(':hp', $hashed_password); //makes the password in the default data the hashed password
 $stmt->execute();
@@ -99,11 +105,13 @@ New BOOLEAN NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 $stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size2,Size2,Name,Price,CategoryID,Photo,New)VALUES
-(NULL,'Sophie','Bourne','Sbourne',:hp,1), 
-(NULL,'Christina','Wood','Secretary',:hp,3),
-(NULL,'Jane','Smith','Jsmith',:hp,2)
-");//inserts all of the default data into the users table
-$stmt->bindParam(':hp', $hashed_password); //makes the password in the default data the hashed password
+(NULL,'24','28','Culottes',33, 1, 'Images/Culottes.jpg',0), 
+(NULL,'34','30','Culottes',41, 1, 'Images/Culottes.jpg',0),
+(NULL,'32','31','Trousers',10, 3, 'Images/Trousers.jpg',0),
+(NULL,'32','33','Trousers',12, 3, 'Images/Trousers.jpg',0),
+(NULL,'30-32','','White T-Shirt',13, 2, 'Images/White T-shirt - culotte.jpg',0),
+(NULL,'34-36','','White T-Shirt',13, 4, 'Images/White T-shirt - trouser.jpg',0),
+");//inserts all of the default data into the type table
 $stmt->execute();
 $stmt->closeCursor();
 
@@ -114,12 +122,25 @@ $stmt->closeCursor();
 //creating categories table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblcategories;
 CREATE TABLE Tblcategories
-(Gender VARCHAR(2) NOT NULL,
-CategoryID VARCHAR(2) NOT NULL,
+(CategoryID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Uniform VARCHAR(2) NOT NULL,
 Type VARCHAR(20) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
+$stmt = $conn->prepare("INSERT INTO Tblcategories(CategoryID,Uniform,Type)VALUES
+(NULL,'Culotte','School'), 
+(NULL,'Culotte','Sport'),
+(NULL,'Trouser','School'),
+(NULL,'Trouser','Sport'),
+(NULL,'Unisex','School'),
+(NULL,'Unisex','Sport')
+");//inserts all of the default data into the categories table
+$stmt->execute();
+$stmt->closeCursor();
+
+
+
 
 //creating house table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblhouse;
@@ -131,6 +152,8 @@ Name VARCHAR(20) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
+
+
 
 //creating email table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblemail;
