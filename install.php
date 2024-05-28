@@ -82,8 +82,7 @@ $stmt = $conn->prepare("INSERT INTO Tbluniform(UniformID,TypeID,HouseID,Stock)VA
 (NULL,3,1,9),
 (NULL,5,2,3),  
 (NULL,6,3,6)
-");//inserts all of the default data into the users table
-$stmt->bindParam(':hp', $hashed_password); //makes the password in the default data the hashed password
+");//inserts all of the default data into the uniform table
 $stmt->execute();
 $stmt->closeCursor();
 
@@ -104,13 +103,13 @@ New BOOLEAN NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
-$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size2,Size2,Name,Price,CategoryID,Photo,New)VALUES
+$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size1,Size2,Name,Price,CategoryID,Photo,New)VALUES
 (NULL,'24','28','Culottes',33, 1, 'Images/Culottes.jpg',0), 
 (NULL,'34','30','Culottes',41, 1, 'Images/Culottes.jpg',0),
 (NULL,'32','31','Trousers',10, 3, 'Images/Trousers.jpg',0),
 (NULL,'32','33','Trousers',12, 3, 'Images/Trousers.jpg',0),
 (NULL,'30-32','','White T-Shirt',13, 2, 'Images/White T-shirt - culotte.jpg',0),
-(NULL,'34-36','','White T-Shirt',13, 4, 'Images/White T-shirt - trouser.jpg',0),
+(NULL,'34-36','','White T-Shirt',13, 4, 'Images/White T-shirt - trouser.jpg',0)
 ");//inserts all of the default data into the type table
 $stmt->execute();
 $stmt->closeCursor();
@@ -123,7 +122,7 @@ $stmt->closeCursor();
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblcategories;
 CREATE TABLE Tblcategories
 (CategoryID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-Uniform VARCHAR(2) NOT NULL,
+Uniform VARCHAR(20) NOT NULL,
 Type VARCHAR(20) NOT NULL
 )");
 $stmt->execute();
