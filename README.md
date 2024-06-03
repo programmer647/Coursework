@@ -3,7 +3,7 @@
 
 
 Currently doing:
-code to calculate total of order when an item is added to the basket
+inner join code on checkoutbarcode page so that required information is displayed
 
 
 Next steps:

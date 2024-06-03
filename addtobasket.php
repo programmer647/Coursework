@@ -96,6 +96,9 @@ $stmt=$conn->prepare("UPDATE tblorders SET Total=:total WHERE OrderID=:orderid")
 $stmt->bindParam(':total', $total);
 $stmt->bindParam('orderid',$_SESSION['orderid']);
 $stmt->execute();
+
+header("location:checkoutbarcode.php");
+
 ?>
 
 
