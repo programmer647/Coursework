@@ -52,28 +52,40 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     print_r($row);
     }
 
-$quantity=0;
+$quantity=1;
 
 echo($_SESSION['orderid']);
 echo($uniformid);
 
-$stmt=$conn->prepare("SELECT * FROM tblbasket WHERE OrderID=$_SESSION['orderid'] and UniformID=$uniformid");
+
+
+$stmt=$conn->prepare("SELECT * FROM tblbasket WHERE OrderID=:orderid and UniformID=:uniform");
+$stmt->bindParam(':orderid',$_SESSION['orderid']);
+$stmt->bindParam(':uniform',$uniformid);
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 {
     print_r($row);
-    //if $row['Quantity']>0{
-      //  $quantity=$row['Quantity']+1
-    //}
+    $q=$row['Quantity'];
+    if ($q>0){
+        $quantity=$q+$quantity;
+    }
 }
-//put something in here to delete the current basket entry if there is one where the orderid and uniformid are the same
-//instead of deleting it could just add one to the basket
 
-/* $stmt=$conn->prepare("INSERT INTO tblbasket(OrderID,UniformID,Quantity) VALUES (:orderid,:uniformid,:quantity");
-$stmt->bindParam(':orderid',$_SESSION['orderid'])
-$stmt->bindParam(':uniformid',$uniformid)
-$stmt->bindParam(':quantity',$quantity)
-$stmt->execute();  */
+if ($quantity>1){
+    $stmt=$conn->prepare("UPDATE tblbasket SET Quantity=:quantity WHERE UniformID=:uniform");
+    $stmt->bindParam(':quantity', $quantity);
+    $stmt->bindParam('uniform',$uniformid);
+    $stmt->execute();
+}
+else{
+    $stmt=$conn->prepare("INSERT INTO tblbasket(OrderID,UniformID,Quantity) VALUES (:orderid,:uniformid,:quantity)");
+    $stmt->bindParam(':orderid',$_SESSION['orderid']);
+    $stmt->bindParam(':uniformid',$uniformid);
+    $stmt->bindParam(':quantity',$quantity);
+    $stmt->execute();
+}
+
 
 
 ?>
