@@ -23,8 +23,13 @@ the information to and the way to do it which is through the post function. -->
   <input type="submit" value="Or enter details manually"><!--Creates a button to redirect to the manual checkout page-->
 </form>
 
+<?php
+if (isset($_SESSION['orderid'])){
+  $stmt->prepare("SELECT * FROM tblbasket WHERE OrderID=:orderid");
+  $stmt->bindParam(':orderid',$_SESSION('orderid'));
+}
 
-
+?>
 
 </body>
 </html>
