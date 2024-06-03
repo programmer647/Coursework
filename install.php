@@ -145,10 +145,15 @@ $stmt->closeCursor();
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblhouse;
 CREATE TABLE Tblhouse
 (HouseID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-Hsm VARCHAR(40) NOT NULL,
-Matron VARCHAR(40) NOT NULL,
 Name VARCHAR(20) NOT NULL
 )");
+$stmt->execute();
+$stmt->closeCursor(); 
+$stmt = $conn->prepare("INSERT INTO Tblhouse(HouseID,Name)VALUES
+(NULL,'FOLSS'), 
+(NULL,'Dryden'),
+(NULL,'Laundimer'),
+");//inserts all of the default data into the houses table
 $stmt->execute();
 $stmt->closeCursor();
 
