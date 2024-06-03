@@ -1,7 +1,8 @@
 <?php
 include("connection.php");
 session_start();
-
+print_r($_SESSION);
+print_r($_POST);
 array_map("htmlspecialchars",$_POST);//prevents SQL injection by making special characters in the post array not have any impact
 
 $date = date('Y-m-d');//sets the variable date to the current date
@@ -37,7 +38,6 @@ $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     {
     $type=$row['TypeID'];//sets the type of the uniform to the variable. This is needed to check the price of the item and to get the name of it
-    echo($type);
     }
 
 $stmt=$conn->prepare("SELECT * FROM tbltype where TypeID=:type");//selects the rows of the table where the typeID is equal to the typID searched for
@@ -47,26 +47,33 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     {
     $price=$row['Price'];
     $name=$row['Name'];
-    $size=$row['Size'];
-    echo($type);
+    $size=$row['Size1'];
+    $size=$row['Size2'];
+    print_r($row);
     }
 
-$quantity=0
+$quantity=0;
+
+echo($_SESSION['orderid']);
+echo($uniformid);
 
 $stmt=$conn->prepare("SELECT * FROM tblbasket WHERE OrderID=$_SESSION['orderid'] and UniformID=$uniformid");
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 {
-    if $row['Quantity']>0{
-        $quantity=$quantity+1
-    }
+    print_r($row);
+    //if $row['Quantity']>0{
+      //  $quantity=$row['Quantity']+1
+    //}
 }
+//put something in here to delete the current basket entry if there is one where the orderid and uniformid are the same
+//instead of deleting it could just add one to the basket
 
-$stmt=$conn->prepare("INSERT INTO tblbasket(OrderID,UniformID,Quantity) VALUES (:orderid,:uniformid,:quantity");
+/* $stmt=$conn->prepare("INSERT INTO tblbasket(OrderID,UniformID,Quantity) VALUES (:orderid,:uniformid,:quantity");
 $stmt->bindParam(':orderid',$_SESSION['orderid'])
 $stmt->bindParam(':uniformid',$uniformid)
 $stmt->bindParam(':quantity',$quantity)
-$stmt->execute();
+$stmt->execute();  */
 
 
 ?>

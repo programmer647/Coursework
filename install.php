@@ -152,7 +152,7 @@ $stmt->closeCursor();
 $stmt = $conn->prepare("INSERT INTO Tblhouse(HouseID,Name)VALUES
 (NULL,'FOLSS'), 
 (NULL,'Dryden'),
-(NULL,'Laundimer'),
+(NULL,'Laundimer')
 ");//inserts all of the default data into the houses table
 $stmt->execute();
 $stmt->closeCursor();
