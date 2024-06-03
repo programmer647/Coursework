@@ -27,6 +27,11 @@ the information to and the way to do it which is through the post function. -->
 if (isset($_SESSION['orderid'])){
   $stmt->prepare("SELECT * FROM tblbasket WHERE OrderID=:orderid");
   $stmt->bindParam(':orderid',$_SESSION('orderid'));
+  while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+  {
+    print_r($row);
+  }
+
 }
 
 ?>
