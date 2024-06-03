@@ -10,6 +10,7 @@
 
 <?php
 session_start(); 
+include_once("connection.php");
 ?>
 
       
@@ -25,10 +26,12 @@ the information to and the way to do it which is through the post function. -->
 
 <?php
 if (isset($_SESSION['orderid'])){
-  $stmt->prepare("SELECT * FROM tblbasket WHERE OrderID=:orderid");
-  $stmt->bindParam(':orderid',$_SESSION('orderid'));
+  $stmt=$conn->prepare("SELECT * FROM tblbasket where OrderID=:orderid");
+  $stmt->bindParam(':orderid',$_SESSION['orderid']);
+  $stmt->execute();
   while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
   {
+    echo(($row[]))
     print_r($row);
   }
 
