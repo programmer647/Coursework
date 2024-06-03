@@ -3,7 +3,7 @@
 
 
 Currently doing:
-code to insert uniform items into tables
+code to calculate total of order when an item is added to the basket
 
 
 Next steps:

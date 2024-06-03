@@ -49,17 +49,12 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     $name=$row['Name'];
     $size=$row['Size1'];
     $size=$row['Size2'];
-    print_r($row);
     }
 
-$quantity=1;
+$quantity=1;//sets the quantity to one as only 1 item is scanned at once
 
-echo($_SESSION['orderid']);
-echo($uniformid);
-
-
-
-$stmt=$conn->prepare("SELECT * FROM tblbasket WHERE OrderID=:orderid and UniformID=:uniform");
+$stmt=$conn->prepare("SELECT * FROM tblbasket WHERE OrderID=:orderid and UniformID=:uniform");//checks to see if there is already an item of the same type in the basket and 
+//if there is it takes the quantity of it so that this can be altered and then updated
 $stmt->bindParam(':orderid',$_SESSION['orderid']);
 $stmt->bindParam(':uniform',$uniformid);
 $stmt->execute();
@@ -68,17 +63,17 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     print_r($row);
     $q=$row['Quantity'];
     if ($q>0){
-        $quantity=$q+$quantity;
+        $quantity=$q+1;
     }
 }
 
-if ($quantity>1){
+if ($quantity>1){//checks if the quantity is greater than 1 as when this is the case the table needs to be updated
     $stmt=$conn->prepare("UPDATE tblbasket SET Quantity=:quantity WHERE UniformID=:uniform");
     $stmt->bindParam(':quantity', $quantity);
     $stmt->bindParam('uniform',$uniformid);
     $stmt->execute();
 }
-else{
+else{//because there is not already an item of the same type in the basket the 
     $stmt=$conn->prepare("INSERT INTO tblbasket(OrderID,UniformID,Quantity) VALUES (:orderid,:uniformid,:quantity)");
     $stmt->bindParam(':orderid',$_SESSION['orderid']);
     $stmt->bindParam(':uniformid',$uniformid);
@@ -87,7 +82,20 @@ else{
 }
 
 
+$stmt=$conn->prepare("SELECT * FROM tblorders where OrderID=:orderid");//selects the rows of the table where the typeID is equal to the typID searched for
+$stmt->bindParam(':orderid',$_SESSION['orderid']);
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+    {
+    $total=$row['Total'];
+    }
 
+$total=$total+$price;//adds the price to the total for the orders table
+
+$stmt=$conn->prepare("UPDATE tblorders SET Total=:total WHERE OrderID=:orderid");//updates the orders table to include the new total
+$stmt->bindParam(':total', $total);
+$stmt->bindParam('orderid',$_SESSION['orderid']);
+$stmt->execute();
 ?>
 
 
