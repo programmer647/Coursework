@@ -7,7 +7,7 @@ code to calculate total of order when an item is added to the basket
 
 
 Next steps:
-
+get barcode scanner and test checkout system with it
 
 
 Things to ask for help about:
