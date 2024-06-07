@@ -20,9 +20,11 @@ the information to and the way to do it which is through the post function. -->
   <input type ="submit" value="Add to basket"><!--Allows the information to be submitted by providing a button to do it-->
 </form>
 
-<form action="checkoutmanual.php" method="post"><!--sets the page to redirect to when the button is pressed-->
+<form action="checkoutmanual.php"><!--sets the page to redirect to when the button is pressed-->
   <input type="submit" value="Or enter details manually"><!--Creates a button to redirect to the manual checkout page-->
 </form>
+
+
 
 <?php
 if (isset($_SESSION['orderid'])){
@@ -30,26 +32,40 @@ if (isset($_SESSION['orderid'])){
  //$stmt->bindParam(':orderid',$_SESSION['orderid']);
   
 
-  $stmt=$conn->prepare("SELECT tblbasket.Quantity as q, tbltype.Name as name, tbltype.Price as cost FROM tblbasket
+  $stmt=$conn->prepare("SELECT tblbasket.Quantity as q, tbltype.Name as name, tbltype.Price as cost, tbltype.Size1, tbltype.Size2 FROM tblbasket
   INNER JOIN tbluniform on tblbasket.UniformID=tbluniform.UniformID
   INNER JOIN tbltype on tbltype.TypeID=tbluniform.TypeID 
   WHERE OrderID=:orderid");
   $stmt->bindParam(':orderid',$_SESSION['orderid']);
   $stmt->execute();
-  echo("Item, Cost, Quantity");
+  echo("Item, Size, Cost, Quantity");
   echo("</br>");
   while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
   {
     
-    echo($row['name'].', '.$row['cost'].', '.$row['q']);
+    echo($row['name'].', ' .$row['Size1'].' '.$row['Size2'].', £'.$row['cost'].', '.$row['q']);
     echo("</br>");
+    
   }
 
+
+  $stmt=$conn->prepare("SELECT Total FROM tblorders WHERE OrderID=:orderid");
+  $stmt->bindParam(':orderid',$_SESSION['orderid']);
+  $stmt->execute();
+  while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+  {
+    echo("</br>");
+    echo('Total:');
+    echo("</br>");
+    echo('£'.$row['Total']);
+    echo("</br>");
+  }
 }
 
-
 ?>
-
+<form action="complete.php"><!--sets the page to redirect to when the button is pressed-->
+  <input type="submit" value="Complete transaction"><!--Creates a button to complete the order by redirecting to the complete.php page-->
+</form>
 
 </body>
 </html>
