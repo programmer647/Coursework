@@ -2,7 +2,7 @@
 <html>
 <head>
     
-    <title>Checkout</title>
+    <title>Barcode Checkout</title>
     
 </head>
 <body>
