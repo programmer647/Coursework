@@ -25,7 +25,7 @@ maybe add pop up button to complete page in case someone presses it by accident
 
 Order to complete pages:
 complete.php
-generate barcodes
 see totals from sales
+generate barcodes
 add uniform to stock
 view barcodes
