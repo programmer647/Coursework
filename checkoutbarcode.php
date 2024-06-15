@@ -4,8 +4,25 @@
     
     <title>Barcode Checkout</title>
     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 </head>
 <body>
+
+
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="checkoutbarcode.php">Barcode checkout</a></li>
+            <li><a href="showtotals.php">View totals</a></li>
+            <li><a href="login.php">Login</a></li>
+
+          </ul>
+        </div>
+      </nav>
+
+
+
 
 
 <?php
@@ -32,9 +49,10 @@ if (isset($_SESSION['orderid'])){
  //$stmt->bindParam(':orderid',$_SESSION['orderid']);
   
 
-  $stmt=$conn->prepare("SELECT tblbasket.Quantity as q, tbltype.Name as name, tbltype.Price as cost, tbltype.Size1, tbltype.Size2 FROM tblbasket
+  $stmt=$conn->prepare("SELECT tblbasket.Quantity as q, tbltype.Name as name, tbltype.Price as cost, tbltype.Size1, tbltype.Size2, tblhouse.name as n FROM tblbasket
   INNER JOIN tbluniform on tblbasket.UniformID=tbluniform.UniformID
   INNER JOIN tbltype on tbltype.TypeID=tbluniform.TypeID 
+  INNER JOIN tblhouse on tbluniform.HouseID=tblhouse.HouseID
   WHERE OrderID=:orderid");
   $stmt->bindParam(':orderid',$_SESSION['orderid']);
   $stmt->execute();
@@ -43,7 +61,7 @@ if (isset($_SESSION['orderid'])){
   while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
   {
     
-    echo($row['name'].', ' .$row['Size1'].' '.$row['Size2'].', £'.$row['cost'].', '.$row['q']);
+    echo($row['n'].', '.$row['name'].', ' .$row['Size1'].' '.$row['Size2'].', £'.$row['cost'].', '.$row['q']);
     echo("</br>");
     
   }

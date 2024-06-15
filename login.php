@@ -6,6 +6,12 @@
 </head>
 
 <body><!--Starts the body section of the page-->
+
+
+
+
+
+
 <form action="loginprocess.php" method= "POST"><!--Creates the form and makes it redirect to the loginprocess 
 page when submitted-->
  Username:<input type="text" name="Username"><br><!--Makes the input box for the username-->
