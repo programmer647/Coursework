@@ -4,6 +4,10 @@
 
 
 <body>
+
+<!DOCTYPE html>
+<body>
+
 <nav class="navbar navbar-default">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
@@ -14,16 +18,11 @@
           </ul>
         </div>
       </nav>
+
         
 </body>
         
 </html>
-
-
-
-
-
-
 
 
 <?php
@@ -37,7 +36,7 @@ $stmt->bindParam(":d",$_POST["date"]);
 $stmt->execute();
 
 $total=0;
-$housetotals = array(1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0, 10=>0, 11=>0, 12=>0, 13=>0, 14=>0, 15=>0);
+$housetotals = array(1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0, 10=>0, 11=>0, 12=>0, 13=>0, 14=>0, 15=>0, 16=>0);
 //print_r($housetotals);
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
@@ -76,6 +75,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
  $stmt3->execute();
  while ($row = $stmt3->fetch(PDO::FETCH_ASSOC))
  {
+
      echo($row['Name']." £".$housetotals[$row['HouseID']]);
      echo("</br>");
  }
@@ -90,3 +90,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 //inner join with tbltype to get price
 
 ?>
+
+
+</body>
+</html>
