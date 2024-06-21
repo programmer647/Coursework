@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,10 +30,10 @@
 
 <?php
 include_once('connection.php');
-session_start();
 
 
-$stmt=$conn->prepare("UPDATE tblorders SET Paid=1 WHERE OrderID=:orderid");
+
+$stmt=$conn->prepare("UPDATE Tblorders SET Paid=1 WHERE OrderID=:orderid");
 $stmt->bindParam(':orderid',$_SESSION['orderid']);
 $stmt->execute();
 

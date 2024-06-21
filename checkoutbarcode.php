@@ -1,5 +1,15 @@
+<?php
+session_start(); 
+include_once("connection.php");
+?>
+
+
 <!DOCTYPE html>
 <html>
+        
+       
+        
+        
 <head>
     
     <title>Barcode Checkout</title>
@@ -25,10 +35,7 @@
 
 
 
-<?php
-session_start(); 
-include_once("connection.php");
-?>
+
 
       
 <form action="addtobasket.php" method="POST"><!--Creates the form where the information can be entered. Also sets the page to submit 
@@ -49,10 +56,10 @@ if (isset($_SESSION['orderid'])){
  //$stmt->bindParam(':orderid',$_SESSION['orderid']);
   
 
-  $stmt=$conn->prepare("SELECT tblbasket.Quantity as q, tbltype.Name as name, tbltype.Price as cost, tbltype.Size1, tbltype.Size2, tblhouse.name as n FROM tblbasket
-  INNER JOIN tbluniform on tblbasket.UniformID=tbluniform.UniformID
-  INNER JOIN tbltype on tbltype.TypeID=tbluniform.TypeID 
-  INNER JOIN tblhouse on tbluniform.HouseID=tblhouse.HouseID
+  $stmt=$conn->prepare("SELECT Tblbasket.Quantity as q, Tbltype.Name as name, Tbltype.Price as cost, Tbltype.Size1, Tbltype.Size2, Tblhouse.name as n FROM Tblbasket
+  INNER JOIN Tbluniform on Tblbasket.UniformID=Tbluniform.UniformID
+  INNER JOIN Tbltype on Tbltype.TypeID=Tbluniform.TypeID 
+  INNER JOIN Tblhouse on Tbluniform.HouseID=Tblhouse.HouseID
   WHERE OrderID=:orderid");
   $stmt->bindParam(':orderid',$_SESSION['orderid']);
   $stmt->execute();
@@ -67,7 +74,7 @@ if (isset($_SESSION['orderid'])){
   }
 
 
-  $stmt=$conn->prepare("SELECT Total FROM tblorders WHERE OrderID=:orderid");
+  $stmt=$conn->prepare("SELECT Total FROM Tblorders WHERE OrderID=:orderid");
   $stmt->bindParam(':orderid',$_SESSION['orderid']);
   $stmt->execute();
   while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
