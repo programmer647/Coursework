@@ -57,6 +57,16 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     $size=$row['Size2'];
     }
 
+
+echo("</br>");  
+echo($price);    
+echo("</br>") ;
+if ($_POST="on"){
+    $price=$price*1.65;
+}
+echo($price);
+echo("</br>");
+
 $quantity=1;//sets the quantity to one as only 1 item is scanned at once
 
 $stmt=$conn->prepare("SELECT * FROM Tblbasket WHERE OrderID=:orderid and UniformID=:uniform");//checks to see if there is already an item of the same type in the basket and 
@@ -79,11 +89,13 @@ if ($quantity>1){//checks if the quantity is greater than 1 as when this is the 
     $stmt->bindParam('uniform',$uniformid);
     $stmt->execute();
 }
+
 else{//because there is not already an item of the same type in the basket the 
-    $stmt=$conn->prepare("INSERT INTO Tblbasket(OrderID,UniformID,Quantity) VALUES (:orderid,:uniformid,:quantity)");
+    $stmt=$conn->prepare("INSERT INTO Tblbasket(OrderID,UniformID,Quantity,New) VALUES (:orderid,:uniformid,:quantity,:new)");
     $stmt->bindParam(':orderid',$_SESSION['orderid']);
     $stmt->bindParam(':uniformid',$uniformid);
     $stmt->bindParam(':quantity',$quantity);
+    $stmt->bindParam(':new',$_POST['New']);
     $stmt->execute();
 }
 
@@ -103,7 +115,7 @@ $stmt->bindParam(':total', $total);
 $stmt->bindParam('orderid',$_SESSION['orderid']);
 $stmt->execute();
 
-header("location:checkoutbarcode.php");
+//header("location:checkoutbarcode.php");
 
 ?>
 

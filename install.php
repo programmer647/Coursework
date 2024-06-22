@@ -48,7 +48,8 @@ $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblbasket;
 CREATE TABLE Tblbasket
 (OrderID INT(4) NOT NULL,
 UniformID VARCHAR(3) NOT NULL,
-Quantity INT(2) NOT NULL
+Quantity INT(2) NOT NULL,
+New VARCHAR(10) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
