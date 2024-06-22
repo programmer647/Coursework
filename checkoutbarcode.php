@@ -65,7 +65,7 @@ if (isset($_SESSION['orderid'])){
  //$stmt->bindParam(':orderid',$_SESSION['orderid']);
   
 
-  $stmt=$conn->prepare("SELECT Tblbasket.Quantity as q, Tbltype.Name as name, Tbltype.Price as cost, Tbltype.Size1, Tbltype.Size2, Tblhouse.name as n FROM Tblbasket
+  $stmt=$conn->prepare("SELECT Tblbasket.Quantity as q, Tblbasket.New as new, Tbltype.Name as name, Tbltype.Price as cost, Tbltype.Size1, Tbltype.Size2, Tblhouse.name as n FROM Tblbasket
   INNER JOIN Tbluniform on Tblbasket.UniformID=Tbluniform.UniformID
   INNER JOIN Tbltype on Tbltype.TypeID=Tbluniform.TypeID 
   INNER JOIN Tblhouse on Tbluniform.HouseID=Tblhouse.HouseID
@@ -77,7 +77,13 @@ if (isset($_SESSION['orderid'])){
   while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
   {
     
-    echo($row['n'].', '.$row['name'].', ' .$row['Size1'].' '.$row['Size2'].', £'.$row['cost'].', '.$row['q']);
+    if ($row['new']=="on"){
+      $price=$row['cost']*1.65;
+    }
+    else{
+      $price=$row['cost'];
+    }
+    echo($row['n'].', '.$row['name'].', ' .$row['Size1'].' '.$row['Size2'].', £'.$price.', '.$row['q']);
     echo("</br>");
     
   }
