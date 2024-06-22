@@ -9,6 +9,7 @@ include("connection.php");
 //session_start();
 print_r($_SESSION);
 print_r($_POST);
+echo($_POST['new']);
 array_map("htmlspecialchars",$_POST);//prevents SQL injection by making special characters in the post array not have any impact
 
 $date = date('Y-m-d');//sets the variable date to the current date
@@ -61,7 +62,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 echo("</br>");  
 echo($price);    
 echo("</br>") ;
-if ($_POST="on"){
+if ($_POST['new']="on"){
     $price=$price*1.65;
 }
 echo($price);
@@ -83,19 +84,23 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     }
 }
 
-if ($quantity>1){//checks if the quantity is greater than 1 as when this is the case the table needs to be updated
+
+echo($_POST['new']);
+
+if ($quantity>1 AND $_POST['New']=="on"){//checks if the quantity is greater than 1 as when this is the case the table needs to be updated
     $stmt=$conn->prepare("UPDATE Tblbasket SET Quantity=:quantity WHERE UniformID=:uniform");
     $stmt->bindParam(':quantity', $quantity);
     $stmt->bindParam('uniform',$uniformid);
     $stmt->execute();
 }
 
+
 else{//because there is not already an item of the same type in the basket the 
     $stmt=$conn->prepare("INSERT INTO Tblbasket(OrderID,UniformID,Quantity,New) VALUES (:orderid,:uniformid,:quantity,:new)");
     $stmt->bindParam(':orderid',$_SESSION['orderid']);
     $stmt->bindParam(':uniformid',$uniformid);
     $stmt->bindParam(':quantity',$quantity);
-    $stmt->bindParam(':new',$_POST['New']);
+    $stmt->bindParam(':new',$_POST['new']);
     $stmt->execute();
 }
 
