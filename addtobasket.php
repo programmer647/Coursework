@@ -62,7 +62,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 echo("</br>");  
 echo($price);    
 echo("</br>") ;
-if ($_POST['new']="on"){
+if ($_POST['new']=="on"){
     $price=$price*1.65;
 }
 echo($price);

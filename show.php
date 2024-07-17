@@ -50,12 +50,14 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
     $stmt2->execute();
     while ($row = $stmt2->fetch(PDO::FETCH_ASSOC))
     {
-        if ($row['n']="on"){
+        if ($row['n']=="on"){
+            echo("yes");
             $price=$row['p']*1.65;
         }
         else{
             $price=$row['p'];
         }
+        echo($price);
         $tot=$row['q']*$price;
         //echo($tot);
         //echo("</br>");
