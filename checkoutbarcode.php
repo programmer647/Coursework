@@ -14,27 +14,10 @@ include_once("connection.php");
     
     <title>Barcode Checkout</title>
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 
 </head>
 <body>
-
-
-<nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="checkoutbarcode.php">Barcode checkout</a></li>
-            <li><a href="showtotals.php">View totals</a></li>
-            <li><a href="login.php">Login</a></li>
-
-          </ul>
-        </div>
-      </nav>
-
-
-
-
-
 
 
       
