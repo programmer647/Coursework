@@ -1,0 +1,18 @@
+.navbar{position: fixed;
+    background-color: #156082;
+    float: left;}
+
+.navbar-active{
+    background-color:#156082;
+}
+
+.navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+    color: #fff !important;
+  }
+  .navbar-nav li.active a{
+    color: #fff "important"; 
+    background-color: #145574 !important;
+  }
