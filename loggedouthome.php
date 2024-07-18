@@ -39,17 +39,30 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="images/shop1.jpg" alt="Los Angeles">
+      <img src="images/Shop1.jpg" alt="shop1">
+      <div class="carousel-caption">
+          <h1>Welcome to the FOLSS pre-loved uniform shop!</h1>
+        </div>
     </div>
 
     <div class="item">
-      <img src="images/shop2.jpg" alt="Chicago">
+      <img src="images/shop2.jpg" alt="shop2">
     </div>
 
     <div class="item">
-      <img src="images/shop3.jpg" alt="New York">
+      <img src="images/shop3.jpg" alt="shop3">
     </div>
   </div>
+
+  <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
 
 </body>
