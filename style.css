@@ -1,18 +1,22 @@
-.navbar{position: fixed;
-    background-color: #156082;
-    float: left;}
-
-.navbar-active{
-    background-color:#156082;
+/*sets the background colour and position of the navbar */
+.navbar{
+    background-color: #156082 !important;
+    float: left;
 }
 
-.navbar li a, .navbar .navbar-brand { 
+/*sets the text colour of the links in the navbar*/
+.navbar li a {
     color: #d5d5d5 !important;
-  }
-  .navbar-nav li a:hover {
+} 
+
+/*sets the text colour to white when the user has their mouse over the link*/
+.navbar-nav li a:hover {
     color: #fff !important;
-  }
-  .navbar-nav li.active a{
-    color: #fff "important"; 
+}
+
+/*sets the text colour and background colour of the active link*/
+.navbar-nav li.active a{
+    color: #fff !important; 
     background-color: #145574 !important;
-  }
+}
+

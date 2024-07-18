@@ -11,7 +11,7 @@
 <body>
 
 <!--creating the navbar-->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-fixed-top"><!--fixes the navbar to the top of the page-->
         <div class="container-fluid">
           <ul class="nav navbar-nav">
             <li class="active"><a href="loggedouthome.php">Home</a></li><!--sets the home page to the active link so that it appears a different 
@@ -27,6 +27,30 @@
           </ul>
         </div>
       </nav>
+
+<div id="carousel" class="carousel slide" data-ride="carousel"
+
+<ol class="carousel-indicators">
+<li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel" data-slide-to="1"></li>
+    <li data-target="#carousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="images/shop1.jpg" alt="Los Angeles">
+    </div>
+
+    <div class="item">
+      <img src="images/shop2.jpg" alt="Chicago">
+    </div>
+
+    <div class="item">
+      <img src="images/shop3.jpg" alt="New York">
+    </div>
+  </div>
+
 
 </body>
 </html>
