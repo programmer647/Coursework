@@ -75,13 +75,20 @@
   <div class="col-sm-7 box">
     <h3>Contact Us</h3>
     <p>Email: folssoundle@gmail.com</p>
+    <h4>Privacy and Returns Policies</h4>
+    <p><a href="privacy.pdf">Privacy Policy</a></br>
+    <a href="returns.pdf">Returns Policy></a></p>
+
+
   </div>
+  
 
   <div class="col-sm-5 box">
     <h3>Upcoming Sales</h3>
     <p>Example: xx/xx/xx</br>
     Example: xx/xx/xx </p>
   </div>
+  
 </div>
 </div>
 
