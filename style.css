@@ -11,6 +11,7 @@
 
 /*sets the text colour to white when the user has their mouse over the link*/
 .navbar-nav li a:hover {
+    background-color: #156082 !important;
     color: #fff !important;
 }
 
@@ -25,3 +26,9 @@
     transform: translateY(-50%);
     bottom: initial;
   } 
+
+
+.box{
+    border-style:solid;
+    border-color: #156082;
+}

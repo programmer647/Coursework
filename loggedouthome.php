@@ -31,7 +31,7 @@
 <div id="carousel" class="carousel slide" data-ride="carousel"
 
 <ol class="carousel-indicators">
-<li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
     <li data-target="#carousel" data-slide-to="1"></li>
     <li data-target="#carousel" data-slide-to="2"></li>
   </ol>
@@ -47,10 +47,16 @@
 
     <div class="item">
       <img src="images/shop2.jpg" alt="shop2">
+      <div class="carousel-caption">
+          <h1>Welcome to the FOLSS pre-loved uniform shop!</h1>
+        </div>
     </div>
 
     <div class="item">
       <img src="images/shop3.jpg" alt="shop3">
+      <div class="carousel-caption">
+          <h1>Welcome to the FOLSS pre-loved uniform shop!</h1>
+        </div>
     </div>
   </div>
 
@@ -62,6 +68,21 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-7 box">
+    <h3>Contact Us</h3>
+    <p>Email: folssoundle@gmail.com</p>
+  </div>
+
+  <div class="col-sm-5 box">
+    <h3>Upcoming Sales</h3>
+    <p>Example: xx/xx/xx</br>
+    Example: xx/xx/xx </p>
+  </div>
+</div>
 </div>
 
 
