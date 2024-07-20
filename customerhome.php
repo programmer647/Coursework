@@ -5,10 +5,9 @@
     
     <title>Home Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><!--links to the bootstrap -->
-    <link rel="stylesheet" href="style.css"><!--links to the external style sheet-->
+    <link rel="stylesheet" href="style.css"/><!--links to the external style sheet-->
 
 </head>
-<body>
 
 <!--creating the navbar-->
 <nav class="navbar navbar-fixed-top"><!--fixes the navbar to the top of the page-->
@@ -29,7 +28,10 @@
         </div>
       </nav>
 
-<div id="carousel" class="carousel slide" data-ride="carousel"
+      <body>
+
+
+<div id="carousel" class="carousel slide" data-ride="carousel">
 
 <ol class="carousel-indicators">
     <li data-target="#carousel" data-slide-to="0" class="active"></li>

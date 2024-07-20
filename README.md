@@ -3,12 +3,12 @@
 
 
 Currently doing:
-inner join code on checkoutbarcode page so that required information is displayed
+volunteer home page
 
 
 Next steps:
-get barcode scanner and test checkout system with it
-need to make it subtract items from stock if 
+admin home page
+fix navbar when used on smaller devices
 
 
 Things to ask for help about:
@@ -23,9 +23,3 @@ might need to get rid of houses table
 if I get rid of houses table take new screenshots of tables which depend on it and then put them into the word document - i have already edited the code but the screenshots and description of the table would need to be changed
 maybe add pop up button to complete page in case someone presses it by accident
 
-Order to complete pages:
-complete.php
-see totals from sales
-generate barcodes
-add uniform to stock
-view barcodes

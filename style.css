@@ -31,5 +31,13 @@
 .box{
     border-style:solid;
     border-color: #156082;
-
 }
+
+.box-centre{
+    text-align:center;
+}
+
+body{
+    margin-top:55px;
+}
+

@@ -12,7 +12,7 @@ session_start();//starts the session so that session variables can be accessed
     <link rel="stylesheet" href="style.css"><!--links to the external style sheet-->
 
 </head>
-<body>
+
 
 <!--creating the navbar-->
 <nav class="navbar navbar-fixed-top"><!--fixes the navbar to the top of the page-->
@@ -26,20 +26,43 @@ session_start();//starts the session so that session variables can be accessed
             <li><a href="checkout.php">Checkout System</a></li>
             <li><a href="vieworders.php">View Orders</a></li>
             <li><a href="account.php">My Account</a></li>
+            <li><a href="logout.php">Log Out</a></li>
 
           </ul>
         </div>
       </nav>
 
-<div class="box">
+<body>
+
+
+<div class="box box-centre">
 <h1>
 <?php
-echo("Hello".$_SESSION['firstname']);
+echo("Hello ".$_SESSION['firstname']);
 ?>  
 </h1>
 
+<h3>Welcome back to the pre-loved uniform shop</h3>
 </div>
-      
+
+<div class="container">
+<div class="box box-centre mx-auto">
+  <h3>What would you like to do?</h3>
+  <p><a href="stock.php">Add stock</a></br>
+  <a href="generate.php">Generate barcodes</a></br>
+  <a href="checkout.php">Use the checkout system</a></br>
+  <a href="vieworders.php">View pending orders</a></br>
+  <a href="account.php">Manage your account</a>
+</p>
+</div>
+</div> 
+
+<div class="container-fluid box">
+<h3 align="center">Upcoming Sales</h3>
+    <p>Example: xx/xx/xx</br>
+    Example: xx/xx/xx </p>
+
+</div>
 
 </body>
 </html>
