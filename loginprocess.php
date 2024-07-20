@@ -20,6 +20,7 @@ if ($stmt->rowCount()>0){
             $_SESSION['name']=$row['Username'];//sets the session variable name to the user's username
             $_SESSION['role']=$row['Role'];//sets the session variable role
             $_SESSION['id']=$row['UserID'];//sets the session variable ID
+            $_SESSION['firstname']=$row['Forename'];//sets the session variable firstname
             echo("Logged in");
         }else{
             echo("Incorrect password");//prints "incorrect password" if the password is incorrect

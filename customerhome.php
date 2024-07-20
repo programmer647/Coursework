@@ -23,6 +23,7 @@
             <li><a href="faqs.php">FAQs</a></li>
             <li><a href="uniformlists.php">Uniform Lists</a></li>
             <li><a href="account.php">My Account</a></li>
+            <li><a href="logout.php">Log out</a></li>
 
           </ul>
         </div>
