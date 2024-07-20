@@ -31,10 +31,10 @@ session_start();//starts the session so that session variables can be accessed
         </div>
       </nav>
 
-<div class="container">
+<div class="box">
 <h1>
 <?php
-echo("Hello".$_SESSION(''))
+echo("Hello".$_SESSION['firstname']);
 ?>  
 </h1>
 
