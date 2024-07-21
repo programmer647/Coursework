@@ -1,17 +1,18 @@
 <?php
-session_start();
-include_once("connection.php");
+session_start();//starts the session
+include_once("connection.php");//allows the page to connect to the database through the connection page
 ?>
 
 <!DOCTYPE html>
 
 <head>
-    <title>Sign up</title>
+    <title>Sign up</title><!--sets the title of the page-->
 </head>
 
 
 <body>
 
+<!--creates the form for the user to enter their details-->
 <form action="signupprocess.php" method= "POST">
  First name:<input type="text" name="forename"><br>
  Surname:<input type="text" name="surname"><br>
@@ -24,3 +25,6 @@ include_once("connection.php");
 </body>
 
 </html>
+
+
+
