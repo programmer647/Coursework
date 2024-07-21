@@ -25,3 +25,6 @@ maybe add pop up button to complete page in case someone presses it by accident
 
 
 addtobasket page needs:
+uniformid
+
+maybe add something into addtobasket page to differentiate between manual entries and barcode entries
