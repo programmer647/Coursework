@@ -1,5 +1,16 @@
 <?php
 session_start();//starts the session so that session variables can be accessed
+if (!isset($_SESSION['name']))
+{   
+    header("Location:loggedouthome.php");
+}
+elseif ($_SESSION['role']==1) {
+    header("Location:customerhome.php");
+}
+elseif ($_SESSION['role']==3) {
+    header("Location:adminhome.php");
+}
+
 ?>
 
 <!DOCTYPE html>

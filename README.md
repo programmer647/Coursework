@@ -3,12 +3,11 @@
 
 
 Currently doing:
-volunteer home page
+manual checkout page
 
 
 Next steps:
-admin home page
-fix navbar when used on smaller devices
+CSS for login, logout and checkout pages
 
 
 Things to ask for help about:
@@ -23,3 +22,6 @@ might need to get rid of houses table
 if I get rid of houses table take new screenshots of tables which depend on it and then put them into the word document - i have already edited the code but the screenshots and description of the table would need to be changed
 maybe add pop up button to complete page in case someone presses it by accident
 
+
+
+addtobasket page needs:

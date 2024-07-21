@@ -1,3 +1,22 @@
+<?php
+session_start();//starts the session so that session variables can be accessed
+
+if (isset($_SESSION['role']))
+{   
+  if ($_SESSION['role']==1) {
+    header("Location:customerhome.php");
+}
+  if ($_SESSION['role']==2) {
+    header("Location:volunteerhome.php");
+}
+  if ($_SESSION['role']==3) {
+    header("Location:adminhome.php");
+}
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
         
