@@ -3,11 +3,12 @@
 
 
 Currently doing:
-CSS for login, logout and checkout pages
+error on sign up page where alert doesn't appear
 
 
 Next steps:
 subracting stock when order is completed
+CSS for sign up, logout and checkout pages
 
 
 Things to ask for help about:
