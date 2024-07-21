@@ -37,12 +37,14 @@
 page when submitted-->
  Username:<input type="text" name="Username"><br><!--Makes the input box for the username-->
  Password:<input type="password" name="Pword"><br><!--Makes the input box for the password-->
-  <input type="submit" value="Login" onclick="logged()"><!--Creates the login button so that the information can be 
+  <input type="submit" value="Login"><!--Creates the login button so that the information can be 
   submitted-->
 </form><!--Closes the form-->
-
+<h4>Don't have an account? Sign up now</h4>
+<form action="signup.php">
+  <input type="submit" value="Sign up">
+</form>
 </div>
-<h4 class="bottom" style=text-align:center>Don't have an account?</h4>
 </div>
 
 

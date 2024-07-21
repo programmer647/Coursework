@@ -61,12 +61,3 @@ body{
     padding-bottom: 2%;
     padding-left: 2%;
 }
-
-.bottom{
-    position:absolute;
-    top: 65%;
-    left:50%;
-    transform: translate(-65%,-50%);
-    color:white;
-
-}
