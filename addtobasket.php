@@ -1,15 +1,17 @@
 <?php
 session_start();
-
 ?>
 
 
 <?php
 include("connection.php");
+
+//code to get uniformid from table using manually entered data
+
+
 //session_start();
 print_r($_SESSION);
 print_r($_POST);
-echo($_POST['new']);
 array_map("htmlspecialchars",$_POST);//prevents SQL injection by making special characters in the post array not have any impact
 
 $date = date('Y-m-d');//sets the variable date to the current date
@@ -59,15 +61,6 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     }
 
 
-echo("</br>");  
-echo($price);    
-echo("</br>") ;
-if ($_POST['new']=="on"){
-    $price=$price*1.65;
-}
-echo($price);
-echo("</br>");
-
 $quantity=1;//sets the quantity to one as only 1 item is scanned at once
 
 $stmt=$conn->prepare("SELECT * FROM Tblbasket WHERE OrderID=:orderid and UniformID=:uniform");//checks to see if there is already an item of the same type in the basket and 
@@ -85,9 +78,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 }
 
 
-echo($_POST['new']);
-
-if ($quantity>1 AND $_POST['New']=="on"){//checks if the quantity is greater than 1 as when this is the case the table needs to be updated
+if ($quantity>1){//checks if the quantity is greater than 1 as when this is the case the table needs to be updated
     $stmt=$conn->prepare("UPDATE Tblbasket SET Quantity=:quantity WHERE UniformID=:uniform");
     $stmt->bindParam(':quantity', $quantity);
     $stmt->bindParam('uniform',$uniformid);
@@ -96,11 +87,10 @@ if ($quantity>1 AND $_POST['New']=="on"){//checks if the quantity is greater tha
 
 
 else{//because there is not already an item of the same type in the basket the 
-    $stmt=$conn->prepare("INSERT INTO Tblbasket(OrderID,UniformID,Quantity,New) VALUES (:orderid,:uniformid,:quantity,:new)");
+    $stmt=$conn->prepare("INSERT INTO Tblbasket(OrderID,UniformID,Quantity) VALUES (:orderid,:uniformid,:quantity)");
     $stmt->bindParam(':orderid',$_SESSION['orderid']);
     $stmt->bindParam(':uniformid',$uniformid);
     $stmt->bindParam(':quantity',$quantity);
-    $stmt->bindParam(':new',$_POST['new']);
     $stmt->execute();
 }
 

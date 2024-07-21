@@ -3,18 +3,18 @@
 
 
 Currently doing:
-manual checkout page
-
-
-Next steps:
 CSS for login, logout and checkout pages
 
 
+Next steps:
+subracting stock when order is completed
+
+
 Things to ask for help about:
+manual checkout page
 
 
 Random thoughts:
-totals will have to be calculated as you add items to the basket so that it can be displayed
 stock will be subtracted when the order is completed - allows for the possibility of removing items from the basket later
 
 maybe change hsm name and matron name in table to their email addresses as names might not be relevant. Or just get rid of it altogether
