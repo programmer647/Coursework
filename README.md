@@ -3,7 +3,7 @@
 
 
 Currently doing:
-error on sign up page where alert doesn't appear
+writeup for error on sign up page where alert doesn't appear
 
 
 Next steps:
