@@ -3,12 +3,12 @@
 
 
 Currently doing:
-writeup for error on sign up page where alert doesn't appear
+finish sign up page so that it adds to the database
 
 
 Next steps:
 subracting stock when order is completed
-CSS for sign up, logout and checkout pages
+CSS for logout and checkout pages
 
 
 Things to ask for help about:

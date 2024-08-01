@@ -13,6 +13,22 @@ if ($_POST['password']!=$_POST['confirm']){ ?> <!--checks if the password and co
 <?php
 }
 
+$stmt=$conn->prepare("SELECT username from Tblusers");//selects all the usernames from the users table
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+    {
+        if (($row['username'])==($_POST['username'])){//checks if the username entered is the same as one in the table
+            ?>
+            <h1>Username already in use. Try another one.</h1>
+            <form action="signup.php"><!--sets the page to redirect back to so that the user can try again-->
+        <input type="submit" value="Try again"><!--Creates a button to allow the user to return to the sign in page-->
+</form>
+<?php
+        }
+    }
+
+
+
 ?>
 
 
