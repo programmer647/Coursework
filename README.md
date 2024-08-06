@@ -25,6 +25,8 @@ if I get rid of houses table take new screenshots of tables which depend on it a
 maybe add pop up button to complete page in case someone presses it by accident
 need to fix CSS so that when the page is made smaller it still looks ok
 
+need to go back to sign up page and change it so that it alerts and redirects instead of doing it on the page
+
 
 
 addtobasket page needs:

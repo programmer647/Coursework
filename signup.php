@@ -1,7 +1,7 @@
 <!DOCTYPE html><!--Declares that the document is a HTML page-->
 <html>
 <head>
-<title>Login</title><!--sets the title of the page-->
+<title>Sign up</title><!--sets the title of the page-->
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><!--links to the bootstrap -->
 <link rel="stylesheet" href="style.css"><!--links to the external style sheet-->
