@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html><!--Declares that the document is a HTML page-->
 <html>
 <head>
@@ -33,15 +38,14 @@
   <div class="centered box white">
   <?php
 
-print_r($_SESSION);
 if(isset($_SESSION['name']))//checks if there is a user logged in
 {
     unset($_SESSION['name']);//unsets the session variable name which stores the user's username
     unset($_SESSION['role']);//unsets the session variable which stores the user's role
-    echo("<h3>Logged out successfully</h3>");
+    echo("<h3>Logged out successfully</h3>");//displays a heading to let the user know they have been logged out
 }
 else{
-    echo("<h3>No user logged in</h3>");
+    echo("<h3>No user logged in</h3>");//displays a heading with the message that nobody was logged in in the first place
 }
 
 
@@ -55,3 +59,6 @@ else{
 </body><!--Ends the body section of the page-->
 
 </html><!--Marks the end of the document-->
+
+
+
