@@ -4,7 +4,7 @@
 
 
 Currently doing:
-finish sign up page so that it adds to the database - currently doing validation
+
 
 
 Next steps:

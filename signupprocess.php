@@ -72,3 +72,7 @@ print_r($_SESSION);
     alert("Sign up successful");
     window.location.href = "customerhome.php";
 </script>
+
+
+
+

@@ -38,29 +38,9 @@ else{
 $conn=null;
 ?>
 
-
-
-<!DOCYTPE HTML>
-<html>
-
-<body>
-
-<nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li><a href="checkoutbarcode.php">Barcode checkout</a></li>
-            <li class="active"><a href="showtotals.php">View totals</a></li>
-            <li><a href="login.php">Login</a></li>
-
-          </ul>
-        </div>
-      </nav>
-</body>
-
-</html>
-
-
-
-
+<script>
+    alert("Sign in successful");//creates an alert message which 
+    window.location.href = "customerhome.php";
+</script>
 
 
