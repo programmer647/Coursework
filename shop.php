@@ -122,9 +122,9 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 <div class="row">
 <div class="col-sm-2">
 <a href="overcoat.php"><img src=images/Overcoat.jpg class="shop"></a>
-<h4><center>Culottes<center></h4>
+<h4><center>Overcoat<center></h4>
 <?php
-$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='Culottes'");
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='Overcoat'");
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
@@ -132,6 +132,20 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 }
 ?>
 </div>
+
+<div class="col-sm-2">
+<a href="tie.php"><img src=images/schooltie.jpg class="shop"></a>
+<h4><center>Ties<center></h4>
+<?php
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='Tie'");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
+    
+}
+?>
+</div>
+
 
 </div>
 
