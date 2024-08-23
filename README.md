@@ -4,7 +4,8 @@
 
 
 Currently doing:
-
+About us page
+Ask for information about the shop to go in about us page
 
 
 Next steps:
