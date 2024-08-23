@@ -12,6 +12,8 @@ Next steps:
 subracting stock when order is completed
 CSS for checkout pages
 add new category for sixth form uniform
+add more uniform so that shop page can be tested properly
+
 
 
 Things to ask for help about:

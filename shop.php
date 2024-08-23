@@ -39,10 +39,100 @@ session_start();
 <div class="container-fluid">
 <div class="row">
 
-<div class="col-sm-4">
+<div class="col-sm-2">
 <a href="culottes.php"><img src=images/culottes.jpg class="shop"></a>
+<h4><center>Culottes<center></h4>
+<?php
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='Culottes'");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
+    
+}
+?>
+</div>
 
+<div class="col-sm-2">
+<a href="trousers.php"><img src=images/trousers.jpg class="shop"></a>
+<h4><center>Trousers<center></h4>
+<?php
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='Trousers'");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
+    
+}
+?>
+</div>
+
+<div class="col-sm-2">
+<a href="culottewhitet-shirt.php"><img src=images/culottewhitet-shirt.jpg class="shop"></a>
+<h4><center>White T-shirt - Culotte uniform<center></h4>
+<?php
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='White T-Shirt'");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
+    
+}
+?>
+</div>
+
+<div class="col-sm-2">
+<a href="trouserwhitet-shirt.php"><img src=images/trouserwhitet-shirt.jpg class="shop"></a>
+<h4><center>White T-shirt - Trouser uniform<center></h4>
+<?php
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='White T-Shirt'");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
+    
+}
+?>
+</div>
    
+<div class="col-sm-2">
+<a href="navyjumper.php"><img src=images/navyjumper.jpg class="shop"></a>
+<h4><center>Navy Jumper<center></h4>
+<?php
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='Navy Jumper'");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
+    
+}
+?>
+</div>
+
+<div class="col-sm-2">
+<a href="pinkculotteshirt.php"><img src=images/pinkculotteshirt.jpg class="shop"></a>
+<h4><center>Pink Shirt - Culotte Uniform<center></h4>
+<?php
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='Sky Blue Jumper'");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
+    
+}
+?>
+</div>
+
+</div>
+
+<div class="row">
+<div class="col-sm-2">
+<a href="overcoat.php"><img src=images/Overcoat.jpg class="shop"></a>
+<h4><center>Culottes<center></h4>
+<?php
+$stmt=$conn->prepare("SELECT MAX(Price) FROM Tbltype WHERE name='Culottes'");
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<h5><center>Up to £'.$row['MAX(Price)'].'<center><h5>');
+    
+}
+?>
+</div>
+
 </div>
 
 </div>
