@@ -13,7 +13,7 @@ include_once("connection.php");
 
 
 <form action = "addtobasket.php" method="post">
-<select name="type">
+<select name="type"> 
 
 <?php
 $stmt=$conn->prepare("SELECT DISTINCT Name FROM Tbltype");//selects every unique name from the type table
@@ -26,10 +26,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 ?>
 </select>
 
-
-
-
 </form>
+
+<script>
+
+
+</script>
+
 
 </body>
 

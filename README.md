@@ -13,7 +13,7 @@ CSS for logout and checkout pages
 
 
 Things to ask for help about:
-manual checkout page
+manual checkout page - javascript for it to make different options appear
 
 
 Random thoughts:
