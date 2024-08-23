@@ -9,7 +9,7 @@ Currently doing:
 
 Next steps:
 subracting stock when order is completed
-CSS for logout and checkout pages
+CSS for checkout pages
 
 
 Things to ask for help about:
