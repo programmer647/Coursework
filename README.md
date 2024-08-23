@@ -4,13 +4,14 @@
 
 
 Currently doing:
-About us page
-Ask for information about the shop to go in about us page
+ask for information about the shop to go in about us page
+shop page
 
 
 Next steps:
 subracting stock when order is completed
 CSS for checkout pages
+add new category for sixth form uniform
 
 
 Things to ask for help about:
