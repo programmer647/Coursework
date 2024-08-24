@@ -109,8 +109,8 @@ $stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size1,Size2,Name,Price,Catego
 (NULL,'34','30','Culottes',41, 1, 'Images/Culottes.jpg',0),
 (NULL,'32','31','Trousers',10, 3, 'Images/Trousers.jpg',0),
 (NULL,'32','33','Trousers',12, 3, 'Images/Trousers.jpg',0),
-(NULL,'30-32','','White T-Shirt',13, 2, 'Images/White T-shirt - culotte.jpg',0),
-(NULL,'34-36','','White T-Shirt',13, 4, 'Images/White T-shirt - trouser.jpg',0)
+(NULL,'30-32','','White T-Shirt',13, 2, 'Images/culottewhitet-shirt.jpg',0),
+(NULL,'34-36','','White T-Shirt',13, 4, 'Images/trouserwhitet-shirt.jpg',0)
 ");//inserts all of the default data into the type table
 $stmt->execute();
 $stmt->closeCursor();

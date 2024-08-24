@@ -5,7 +5,8 @@
 
 Currently doing:
 ask for information about the shop to go in about us page
-shop page
+shop overview page
+ask about which price to display - smaller or larger or both
 
 
 Next steps:
@@ -13,11 +14,13 @@ subracting stock when order is completed
 CSS for checkout pages
 add new category for sixth form uniform
 add more uniform so that shop page can be tested properly
+add another category to type table with page with more information
 
 
 
 Things to ask for help about:
 manual checkout page - javascript for it to make different options appear
+ask Mr Cunniffe about table whether I should make another items table but have to redo the whole checkout system
 
 
 Random thoughts:
