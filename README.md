@@ -17,6 +17,13 @@ add more uniform so that shop page can be tested properly
 add another category to type table with page with more information
 
 
+Pages that need changing because of table change:
+install
+shop
+barcode checkout
+add to basket
+
+
 
 Things to ask for help about:
 manual checkout page - javascript for it to make different options appear

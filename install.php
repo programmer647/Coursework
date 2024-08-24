@@ -93,24 +93,42 @@ $stmt->closeCursor();
 //creating type table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tbltype;
 CREATE TABLE Tbltype
-(TypeID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+(TypeID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 Size1 VARCHAR(10) NOT NULL,
 Size2 VARCHAR(10) NOT NULL,
-Name VARCHAR(20) NOT NULL,
+ItemID INT(2) NOT NULL,
 Price FLOAT(5,2) NOT NULL,
-CategoryID INT(2) NOT NULL,
-Photo VARCHAR(50) NOT NULL,
 New BOOLEAN NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
-$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size1,Size2,Name,Price,CategoryID,Photo,New)VALUES
-(NULL,'24','28','Culottes',33, 1, 'Images/Culottes.jpg',0), 
-(NULL,'34','30','Culottes',41, 1, 'Images/Culottes.jpg',0),
-(NULL,'32','31','Trousers',10, 3, 'Images/Trousers.jpg',0),
-(NULL,'32','33','Trousers',12, 3, 'Images/Trousers.jpg',0),
-(NULL,'30-32','','White T-Shirt',13, 2, 'Images/culottewhitet-shirt.jpg',0),
-(NULL,'34-36','','White T-Shirt',13, 4, 'Images/trouserwhitet-shirt.jpg',0)
+$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size1,Size2,ItemID,Price,New)VALUES
+(NULL,'24','28',1, 33,0), 
+(NULL,'34','30', 1, 41,0),
+(NULL,'32','31', 2, 10, 0),
+(NULL,'32','33', 2, 12, 0),
+(NULL,'30-32','', 3, 13, 0),
+(NULL,'34-36','', 3, 13, 0)
+");//inserts all of the default data into the type table
+$stmt->execute();
+$stmt->closeCursor();
+
+
+//creating items table
+$stmt=$conn->prepare("DROP TABLE IF EXISTS Tblitems;
+CREATE TABLE Tblitems
+(ItemID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Name VARCHAR(20) NOT NULL,
+CategoryID INT(1) NOT NULL,
+Photo VARCHAR(50) NOT NULL
+)");
+$stmt->execute();
+$stmt->closeCursor();
+$stmt = $conn->prepare("INSERT INTO Tblitems(ItemID,Name,CategoryID,Photo)VALUES
+(NULL,'Culottes', 1, 'Images/Culottes.jpg'), 
+(NULL,'Trousers', 3, 'Images/Trousers.jpg'),
+(NULL,'White T-Shirt', 2, 'Images/culottewhitet-shirt.jpg'),
+(NULL,'White T-Shirt', 4, 'Images/trouserwhitet-shirt.jpg')
 ");//inserts all of the default data into the type table
 $stmt->execute();
 $stmt->closeCursor();

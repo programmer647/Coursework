@@ -38,7 +38,7 @@ session_start();
 
 <div class="container-fluid">
 <?php
-$stmt=$conn->prepare("SELECT TypeID, Name, Price, Photo FROM TblType");
+$stmt=$conn->prepare("SELECT DISTINCT Name, TypeID, Price, Photo FROM TblType");
 $stmt->execute();
 
 $k=0;
