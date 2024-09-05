@@ -38,24 +38,25 @@ session_start();//starts the session so that session variables can be accessed
 
 <div class="container-fluid">
 <?php
-$stmt=$conn->prepare("SELECT * FROM Tblitems");
+$stmt=$conn->prepare("SELECT * FROM Tblitems");//selects all the details of every item in the table
 $stmt->execute();
 
-$k=0;
+$c=0;//variable that stores the number of columns that have been created. When it hits 6 which is the maximum it goes back to zero 
+//which starts a new row
 
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-    if ($k==0){
-        echo('<div class=row>');
+    if ($c==0){
+        echo('<div class=row>');//creates a new row if the maximum number of columns for the previous one has been reached
     }
-    echo('<div class="col-sm-2">');
+    echo('<div class="col-sm-2">');//creates a column which is the correct width for there to be 6 on the page
     $photo=$row['Photo'];
-    echo("<img src=$photo class='shop'>");
-    echo($row['Name']);
-    echo('</div>');
+    echo("<img src=$photo class='shop'>");//prints the photo of the item which has been retreived from the database
+    echo($row['Name']);//prints the name of the item underneath the photo
+    echo('</div>');//ends the div allowing another item to be created
 
-    $k=$k+1;
-    if ($k==6){
-        echo('</div>');
+    $c=$c+1;//adds one to the column value
+    if ($c==6){//checks if the maximum number of columns has been reached
+        echo('</div>');//ends the current row if the max number of columns has been reached
     }
 }
 
