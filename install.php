@@ -131,8 +131,12 @@ $stmt->closeCursor();
 $stmt = $conn->prepare("INSERT INTO Tblitems(ItemID,Name,CategoryID,Photo)VALUES
 (NULL,'Culottes', 1, 'Images/Culottes.jpg'), 
 (NULL,'Trousers', 3, 'Images/Trousers.jpg'),
-(NULL,'White T-Shirt', 2, 'Images/culottewhitet-shirt.jpg'),
-(NULL,'White T-Shirt', 4, 'Images/trouserwhitet-shirt.jpg')
+(NULL,'Culotte Uniform White T-Shirt', 2, 'Images/culottewhitet-shirt.jpg'),
+(NULL,'Trouser Uniform White T-Shirt', 4, 'Images/trouserwhitet-shirt.jpg'),
+(NULL,'Overcoat', 9, 'Images/overcoat.jpg'),
+(NULL,'Rucksack', 10, 'Images/rucksack.jpg'),
+(NULL,'Culotte Uniform Pink Shirt', 7, 'Images/culottepinkshirt.jpg'),
+(NULL,'Trouser Blue Shirt', 8, 'Images/trouserblueshirt.jpg')
 ");//inserts all of the default data into the type table
 $stmt->execute();
 $stmt->closeCursor();
