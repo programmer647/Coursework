@@ -1,6 +1,6 @@
 <?php
-include_once("connection.php");
-session_start();
+include_once("connection.php");//connects the page to the database
+session_start();//starts the session so that session variables can be accessed
 
 ?>
 
@@ -9,7 +9,7 @@ session_start();
         
 <head>
     
-    <title>Shop</title>
+    <title>Shop</title><!--sets the title of the page-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><!--links to the bootstrap -->
     <link rel="stylesheet" href="style.css"/><!--links to the external style sheet-->
 
@@ -21,7 +21,7 @@ session_start();
           <ul class="nav navbar-nav">
             <li><a href="loggedouthome.php">Home</a></li>
             <li><a href="about.php">About Us</a></li>
-            <li class="active"><a href="shop.php">Shop</a></li><!--sets the home page to the active link so that it appears a different 
+            <li class="active"><a href="shop.php">Shop</a></li><!--sets the shop page to the active link so that it appears a different 
             colour so that the user knows which page they are currently on-->
             <li><a href="news.php">News</a></li>
             <li><a href="faqs.php">FAQs</a></li>
@@ -38,7 +38,7 @@ session_start();
 
 <div class="container-fluid">
 <?php
-$stmt=$conn->prepare("SELECT DISTINCT Name, TypeID, Price, Photo FROM TblType");
+$stmt=$conn->prepare("SELECT * FROM Tblitems");
 $stmt->execute();
 
 $k=0;
@@ -48,10 +48,9 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         echo('<div class=row>');
     }
     echo('<div class="col-sm-2">');
-    $typeid=$row['TypeID'];
     $photo=$row['Photo'];
-    echo("<a href=detaileduniform.php?id".$row["TypeID"]."><img src=$photo class='shop'></a>");
-    echo($row['Name'].'<br>£ '.$row['Price']);
+    echo("<img src=$photo class='shop'>");
+    echo($row['Name']);
     echo('</div>');
 
     $k=$k+1;
@@ -67,3 +66,21 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 </div>
 
 
+
+
+<!-- while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    if ($k==0){
+        echo('<div class=row>');
+    }
+    echo('<div class="col-sm-2">');
+    $typeid=$row['TypeID'];
+    $photo=$row['Photo'];
+    echo("<a href=detaileduniform.php?id".$row["TypeID"]."><img src=$photo class='shop'></a>");
+    echo($row['Name'].'<br>£ '.$row['Price']);
+    echo('</div>');
+
+    $k=$k+1;
+    if ($k==6){
+        echo('</div>');
+    }
+} -->

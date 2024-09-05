@@ -97,18 +97,20 @@ CREATE TABLE Tbltype
 Size1 VARCHAR(10) NOT NULL,
 Size2 VARCHAR(10) NOT NULL,
 ItemID INT(2) NOT NULL,
-Price FLOAT(5,2) NOT NULL,
-New BOOLEAN NOT NULL
+Price FLOAT(5,2) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
-$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size1,Size2,ItemID,Price,New)VALUES
-(NULL,'24','28',1, 33,0), 
-(NULL,'34','30', 1, 41,0),
-(NULL,'32','31', 2, 10, 0),
-(NULL,'32','33', 2, 12, 0),
-(NULL,'30-32','', 3, 13, 0),
-(NULL,'34-36','', 3, 13, 0)
+
+
+
+$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size1,Size2,ItemID,Price)VALUES
+(NULL,'24','28',1, 33), 
+(NULL,'34','30', 1, 41),
+(NULL,'32','31', 2, 10),
+(NULL,'32','33', 2, 12),
+(NULL,'30-32','', 3, 13),
+(NULL,'34-36','', 3, 13)
 ");//inserts all of the default data into the type table
 $stmt->execute();
 $stmt->closeCursor();
@@ -124,6 +126,8 @@ Photo VARCHAR(50) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
+
+
 $stmt = $conn->prepare("INSERT INTO Tblitems(ItemID,Name,CategoryID,Photo)VALUES
 (NULL,'Culottes', 1, 'Images/Culottes.jpg'), 
 (NULL,'Trousers', 3, 'Images/Trousers.jpg'),
@@ -142,17 +146,24 @@ $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblcategories;
 CREATE TABLE Tblcategories
 (CategoryID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 Uniform VARCHAR(20) NOT NULL,
-Type VARCHAR(20) NOT NULL
+Type VARCHAR(20) NOT NULL,
+Year VARCHAR(20) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
-$stmt = $conn->prepare("INSERT INTO Tblcategories(CategoryID,Uniform,Type)VALUES
-(NULL,'Culotte','School'), 
-(NULL,'Culotte','Sport'),
-(NULL,'Trouser','School'),
-(NULL,'Trouser','Sport'),
-(NULL,'Unisex','School'),
-(NULL,'Unisex','Sport')
+
+
+$stmt = $conn->prepare("INSERT INTO Tblcategories(CategoryID,Uniform,Type, Year)VALUES
+(NULL,'Culotte','School','All'), 
+(NULL,'Culotte','Sport','All'),
+(NULL,'Trouser','School','All'),
+(NULL,'Trouser','Sport','All'),
+(NULL,'Unisex','School','All'),
+(NULL,'Unisex','Sport','All'),
+(NULL,'Unisex','School','Sixth'),
+(NULL,'Unisex','School','Sixth'),
+(NULL,'Unisex','School','Sixth'),
+(NULL,'Unisex','School','Junior')
 ");//inserts all of the default data into the categories table
 $stmt->execute();
 $stmt->closeCursor();
