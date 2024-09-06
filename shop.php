@@ -27,12 +27,12 @@ session_start();//starts the session so that session variables can be accessed
             <li><a href="faqs.php">FAQs</a></li>
             <li><a href="uniformlists.php">Uniform Lists</a></li>
             <?php
-            if (!isset($_SESSION['Name'])){
-            echo("<li><a href="login.php">Login/Sign up</a></li>");
+            if (!isset($_SESSION['name'])){
+                echo("<li><a href='login.php'>Login/Sign up</a></li>");
             }
             else{
-                echo("<li><a href="account.php">My Account</a></li>
-                <li><a href="logout.php">Log out</a></li>");
+                echo("<li><a href='account.php'>My Account</a></li>
+                <li><a href='logout.php'>Log out</a></li>");
             }
             ?>
 
