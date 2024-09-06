@@ -120,7 +120,7 @@ $stmt->closeCursor();
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblitems;
 CREATE TABLE Tblitems
 (ItemID INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-Name VARCHAR(20) NOT NULL,
+Name VARCHAR(30) NOT NULL,
 CategoryID INT(1) NOT NULL,
 Photo VARCHAR(50) NOT NULL
 )");

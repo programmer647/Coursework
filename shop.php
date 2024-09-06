@@ -26,8 +26,15 @@ session_start();//starts the session so that session variables can be accessed
             <li><a href="news.php">News</a></li>
             <li><a href="faqs.php">FAQs</a></li>
             <li><a href="uniformlists.php">Uniform Lists</a></li>
-            <li><a href="account.php">My Account</a></li>
-            <li><a href="logout.php">Log out</a></li>
+            <?php
+            if (!isset($_SESSION['Name'])){
+            echo("<li><a href="login.php">Login/Sign up</a></li>");
+            }
+            else{
+                echo("<li><a href="account.php">My Account</a></li>
+                <li><a href="logout.php">Log out</a></li>");
+            }
+            ?>
 
           </ul>
         </div>
@@ -51,7 +58,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo('<div class="col-sm-2">');//creates a column which is the correct width for there to be 6 on the page
     $photo=$row['Photo'];
     echo("<img src=$photo class='shop'>");//prints the photo of the item which has been retreived from the database
-    echo($row['Name']);//prints the name of the item underneath the photo
+    echo("<center><h4>".$row['Name']."</h4></center>");//prints the name of the item underneath the photo
     echo('</div>');//ends the div allowing another item to be created
 
     $c=$c+1;//adds one to the column value
