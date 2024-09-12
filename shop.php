@@ -43,6 +43,14 @@ session_start();//starts the session so that session variables can be accessed
       <body>
 
 
+<div class="sort">
+    <button type="button" class="btn btn-info">Sort</button>
+</div>
+
+
+
+
+
 <div class="container-fluid">
 <?php
 $stmt=$conn->prepare("SELECT * FROM Tblitems");//selects all the details of every item in the table
@@ -73,3 +81,11 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 </div>
 
 
+<script>
+
+
+</script>
+
+
+</body>
+</html>
