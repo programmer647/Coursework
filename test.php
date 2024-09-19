@@ -42,9 +42,31 @@ session_start();//starts the session so that session variables can be accessed
 
       <body>
 
-
-<div class="sort">
-    <button id="sortBtn" class="btn">Sort</button>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="dropdown">
+        <button id="sortBtn" class="btn dropbtn" onclick="sortDrop()">Sort</button>
+        <div id="sortDropdown" class="dropdown-content">
+            <form action="sortfilter.php" method="POST" id="sortForm" style="padding: 10%;">
+                <div class="text-center">
+                    <input id="order-asc" type="radio" value="ASC" name="order" required>
+                    <label id="order-asc" for="order-asc">Ascending
+                    </label>
+                    <input id="order-des" type="radio" value="DES" name="order" required>
+                    <label id="order-des" for="order-des">Descending
+                    </label>
+                </div>
+                <hr class="solid1">
+                <input id="price" type="radio" value="itemprice" name="sort" required>
+                <label for="price">Price</label><br>
+                <input id="name" type="radio" value="itemname" name="sort">
+                <lable for="name">Name</label>
+                <input type="hidden" name="type" value='sort'>
+                <input type="hidden" name="filter" value=<?php if(isset($category)){echo($category);}else{echo('none');}?>>
+                <br><div class="text-center"><input type="submit" value="Apply" class="btn btn-lg"></div>
+            </form>
+        </div>
+    </div>
 </div>
 
 
@@ -69,7 +91,6 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     //photo also acts as a link to take the user to the page with more details
     echo("<center><h4>".$row['Name']."</h4></center>");//prints the name of the item underneath the photo
     echo('</div>');//ends the div allowing another item to be created
-
     $c=$c+1;//adds one to the column value
     if ($c==6){//checks if the maximum number of columns has been reached
         echo('</div>');//ends the current row if the max number of columns has been reached
@@ -83,7 +104,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 <script>
     function sortDrop(){
-        document.getElementByID("SortDropdown").classList.toggle("show");
+        document.getElementByID("sortDropdown").classList.toggle("show");
     }
 
 </script>
