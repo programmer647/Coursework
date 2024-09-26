@@ -104,7 +104,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 <script>
     function sortDrop(){
-        document.getElementByID("sortDropdown").classList.toggle("show");
+        document.getElementById("sortDropdown").classList.toggle("show");
     }
 
 </script>

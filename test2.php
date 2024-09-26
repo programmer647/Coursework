@@ -46,15 +46,75 @@ session_start();//starts the session so that session variables can be accessed
 <div class="row">
     <div class="col-sm-2"></div>
     <div class="dropdown">
-        <button id="filterBtn" class="btn" onclick="filterDrop()">Filter</button>
-            <div id="filterDropdown">Hello</div>
+    <button class="btn btn-info">Filter</button>
+        <div id="filterDropdown" class="dropdown-content">
+        <form>
+            <p>Uniform</p>
+            <input type="radio" id="c" name="Uniform" value="Culotte">
+            <label for="c">Culotte</label><br>
+            <input type="radio" value="Trouser" name="Uniform" id="t">
+            <label for="t">Trouser</label><br>
+            <input type="radio" value="Unisex" name="Uniform" id="u">
+            <label for="u">Unisex</label><br>
+            <input type="radio" value="Alluniform" name="Uniform" id="au">
+            <label for="au">All</label><br>
+
+            <p>Sports/uniform</p>
+            <input type="radio" id="school" value="School" name="Type">
+            <label for="school">Schoolwear</label><br>
+            <input type="radio" id="sport" value="Sport" name="Type">
+            <label for="sport">Sportswear</label><br>
+            <input type="radio" value="Alltypes" name="Type" id="at">
+            <label for="at">All</label><br>
+
+            <p>Year Group</p>
+            <input type="radio" id="junior" name="Year" value="Junior">
+            <label for="junior">1st and 2nd form</label><br>
+            <input type="radio" value="3rd - 5th form" name="Year" id="Middle">
+            <label for="Middle">3rd - 5th form</label><br>
+            <input type="radio" value="6th form" name="Year" id="Senior">
+            <label for="Senior">6th form</label><br>
+            <input type="radio" value="Allyears" name="Year" id="ay">
+            <label for="ay">All</label><br>
+
+        </form>
+        </div>
+        </div>
         </div>
 
-        </div>
+<div class="container-fluid">
+<?php
+$stmt=$conn->prepare("SELECT * FROM Tblitems");//selects all the details of every item in the table
+$stmt->execute();
+
+$c=0;//variable that stores the number of columns that have been created. When it hits 6 which is the maximum it goes back to zero 
+//which starts a new row
+
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    if ($c==0){
+        echo('<div class=row>');//creates a new row if the maximum number of columns for the previous one has been reached
+    }
+    echo('<div class="col-sm-2">');//creates a column which is the correct width for there to be 6 on the page
+    $photo=$row['Photo'];
+    echo("<a href=detaileduniform.php?id=".$row['ItemID']."><img src=$photo class='shop'></a>");//prints the photo of the item which has been retreived from the database. This 
+    //photo also acts as a link to take the user to the page with more details
+    echo("<center><h4>".$row['Name']."</h4></center>");//prints the name of the item underneath the photo
+    echo('</div>');//ends the div allowing another item to be created
+
+    $c=$c+1;//adds one to the column value
+    if ($c==6){//checks if the maximum number of columns has been reached
+        echo('</div>');//ends the current row if the max number of columns has been reached
+    }
+}
+
+?>
+</div>
+
+
 
 <script>
     function filterDrop(){
-        document.getElementByID("filterDropdown").style.display = "none";
+        document.getElementById("filterDropdown").style.display = "none";
 
     }
 

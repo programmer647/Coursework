@@ -69,3 +69,7 @@ body{
 
 /* everything past here is experimental */
 
+.dropdown{
+    display: inline-block;
+}
+
