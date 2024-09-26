@@ -12,6 +12,8 @@ session_start();//starts the session so that session variables can be accessed
     <title>Shop</title><!--sets the title of the page-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><!--links to the bootstrap -->
     <link rel="stylesheet" href="style.css"/><!--links to the external style sheet-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -46,9 +48,9 @@ session_start();//starts the session so that session variables can be accessed
 <div class="row">
     <div class="col-sm-2"></div>
     <div class="dropdown">
-    <button class="btn btn-info">Filter</button>
-        <div id="filterDropdown" class="dropdown-content">
-        <form>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#filterDropdown">Filter</button>
+        <div id="filterDropdown" class="collapse">
+        <form action="filter.php" method="POST">
             <p>Uniform</p>
             <input type="radio" id="c" name="Uniform" value="Culotte">
             <label for="c">Culotte</label><br>
@@ -76,6 +78,8 @@ session_start();//starts the session so that session variables can be accessed
             <label for="Senior">6th form</label><br>
             <input type="radio" value="Allyears" name="Year" id="ay">
             <label for="ay">All</label><br>
+
+            <input type="submit" value="Apply">
 
         </form>
         </div>
