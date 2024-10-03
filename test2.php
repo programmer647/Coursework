@@ -70,13 +70,13 @@ session_start();//starts the session so that session variables can be accessed
             <label for="at">All</label><br>
 
             <p>Year Group</p>
-            <input type="radio" id="junior" name="Year" value="Junior">
+            <input type="radio" id="Junior" name="Year" value="Junior">
             <label for="junior">1st and 2nd form</label><br>
-            <input type="radio" value="3rd - 5th form" name="Year" id="Middle">
+            <input type="radio" value="middle" name="Year" id="Middle">
             <label for="Middle">3rd - 5th form</label><br>
-            <input type="radio" value="6th form" name="Year" id="Senior">
+            <input type="radio" value="Sixth" name="Year" id="Senior">
             <label for="Senior">6th form</label><br>
-            <input type="radio" value="Allyears" name="Year" id="ay">
+            <input type="radio" value="All" name="Year" id="ay">
             <label for="ay">All</label><br>
 
             <input type="submit" value="Apply">
