@@ -164,8 +164,8 @@ $stmt = $conn->prepare("INSERT INTO Tblcategories(CategoryID,Uniform,Type, Year)
 (NULL,'Trouser','Sport','All'),
 (NULL,'Unisex','School','All'),
 (NULL,'Unisex','Sport','All'),
-(NULL,'Unisex','School','Sixth'),
-(NULL,'Unisex','School','Sixth'),
+(NULL,'Culotte','School','Sixth'),
+(NULL,'Trouser','School','Sixth'),
 (NULL,'Unisex','School','Sixth'),
 (NULL,'Unisex','School','Junior')
 ");//inserts all of the default data into the categories table
