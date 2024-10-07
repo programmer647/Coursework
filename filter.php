@@ -73,10 +73,9 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     $categories[]=$row['CategoryID'];
 }
 
-print_r($categories);
 
-
-//create an array of the possible categories, send this back to the page and then only display items from these categories
+$_SESSION['Categories']=$categories;
+header("location:shop.php");
 
 ?>
 
