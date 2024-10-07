@@ -1,10 +1,10 @@
 <?php
 
 //sets the variables needed to log on to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "FOLSS";
+$servername = "pdb1056.awardspace.net";
+$username = "4496312_folss";
+$password = "Cloisters2023!!";
+$dbname = "4496312_folss";
 
 //this code tries to connect to the database
 try {

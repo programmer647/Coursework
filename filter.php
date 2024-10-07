@@ -17,7 +17,7 @@ elseif($_POST['Uniform']=="Alluniform" AND $_POST['Type']=="Alltypes" AND $_POST
 }
 
 elseif($_POST['Uniform']=="Alluniform" AND $_POST['Type']=="Alltypes" AND ($_POST['Year']=="Junior" OR $_POST['Year']=="Sixth")){
-    $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Year=:year");
+    $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Year=:year or Year='All'");
     $stmt->bindParam(':year',$_POST['Year']);
     //$stmt->execute();
 }
@@ -44,32 +44,36 @@ elseif($_POST['Year']=="Allyears"){
 }
 
 elseif($_POST['Type']=="Alltypes"){
-    $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Uniform=:uniform and Year=:year");
+    $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Uniform=:uniform and (Year=:year or Year='All')");
     $stmt->bindParam(':uniform',$_POST['Uniform']);
     $stmt->bindParam(':year',$_POST['Year']);
     //$stmt->execute();
 }
 
 elseif($_POST['Uniform']=="Alluniform"){
-    $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Type=:type and Year=:year");
+    $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Type=:type and (Year=:year or Year='All')");
     $stmt->bindParam(':type',$_POST['Type']);
     $stmt->bindParam(':year',$_POST['Year']);
     //$stmt->execute();
 }
 
 else{
-    $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Uniform=:uniform and Type=:type and Year=:year");
+    $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Uniform=:uniform and Type=:type and (Year=:year or Year='All')");
     $stmt->bindparam(':uniform',$_POST['Uniform']);
     $stmt->bindparam(':type',$_POST['Type']);
     $stmt->bindparam(':year',$_POST['Year']);
     //$stmt->execute();
 }
 
+$categories=[];
+
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 {
-    print_r($row);
+    $categories[]=$row['CategoryID'];
 }
+
+print_r($categories);
 
 
 //create an array of the possible categories, send this back to the page and then only display items from these categories
