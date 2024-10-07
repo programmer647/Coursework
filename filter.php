@@ -4,7 +4,7 @@ session_start();
 
 print_r($_POST);
 
-if ($_POST['Uniform']=="Alluniform" AND $_POST['Type']=="Alltypes" AND $_POST['Year']=="Allyears"){
+if ($_POST['Uniform']=="Alluniform" AND $_POST['Type']=="Alltypes" AND $_POST['Year']=="All"){
     echo("Yes");
     $stmt=$conn->prepare("SELECT CategoryID from TblCategories");
     //$stmt->execute();
@@ -22,13 +22,13 @@ elseif($_POST['Uniform']=="Alluniform" AND $_POST['Type']=="Alltypes" AND ($_POS
     //$stmt->execute();
 }
 
-elseif($_POST['Uniform']=="Alluniform" AND $_POST['Year']=="Allyears"){
+elseif($_POST['Uniform']=="Alluniform" AND $_POST['Year']=="All"){
     $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Type=:type");
     $stmt->bindParam(':type',$_POST['Type']);
     //$stmt->execute();
 }
 
-elseif($_POST['Type']=="Alltypes" AND $_POST['Year']=="Allyears"){
+elseif($_POST['Type']=="Alltypes" AND $_POST['Year']=="All"){
     echo("yes");
     $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Uniform=:uniform");
     $stmt->bindParam(':uniform',$_POST['Uniform']);
@@ -36,7 +36,7 @@ elseif($_POST['Type']=="Alltypes" AND $_POST['Year']=="Allyears"){
 }
 
 
-elseif($_POST['Year']=="Allyears"){
+elseif($_POST['Year']=="All"){
     $stmt=$conn->prepare("SELECT CategoryID from TblCategories where Uniform=:uniform and Type=:type");
     $stmt->bindParam(':uniform',$_POST['Uniform']);
     $stmt->bindParam(':type',$_POST['Type']);
@@ -73,9 +73,10 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
     $categories[]=$row['CategoryID'];
 }
 
+print_r($categories);
 
 $_SESSION['Categories']=$categories;
-header("location:shop.php");
+header("location:test2.php");
 
 ?>
 

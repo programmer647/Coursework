@@ -76,7 +76,7 @@ session_start();//starts the session so that session variables can be accessed
             <label for="Middle">3rd - 5th form</label><br>
             <input type="radio" value="Sixth" name="Year" id="Senior">
             <label for="Senior">6th form</label><br>
-            <input type="radio" value="Allyears" name="Year" id="ay">
+            <input type="radio" value="All" name="Year" id="ay">
             <label for="ay">All</label><br>
 
             <input type="submit" value="Apply">
@@ -87,8 +87,11 @@ session_start();//starts the session so that session variables can be accessed
         </div>
 
 <div class="container-fluid">
+
 <?php
-$stmt=$conn->prepare("SELECT * FROM Tblitems");//selects all the details of every item in the table
+$categories=$_SESSION['Categories'];
+
+$stmt=$conn->prepare("SELECT * FROM Tblitems WHERE CategoryID IN (" . implode(',', $categories) . ")");
 $stmt->execute();
 
 $c=0;//variable that stores the number of columns that have been created. When it hits 6 which is the maximum it goes back to zero 
@@ -112,9 +115,8 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 }
 
 ?>
+
 </div>
-
-
 
 <script>
     function filterDrop(){
