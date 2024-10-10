@@ -46,5 +46,20 @@ session_start();//starts the session so that session variables can be accessed
 
 <button onclick="location.href='shop.php'" type="button" class="btn btn-secondary" action="shop.php">Back</button>
 
+<?php
+
+$id=$_GET['id'];
+
+echo($id);
+
+$stmt=$conn->prepare("SELECT Photo FROM Tblitems where ItemID=:id");
+$stmt->bindparam(':id',$id);
+$stmt->execute();
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+  echo($row['Photo']);
+}
+
+?>
+
 
 
