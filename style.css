@@ -73,3 +73,14 @@ body{
     display: inline-block;
 }
 
+
+/*centred images*/
+.centre {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+  
+
+  

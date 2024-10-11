@@ -50,16 +50,41 @@ session_start();//starts the session so that session variables can be accessed
 
 $id=$_GET['id'];
 
-echo($id);
 
 $stmt=$conn->prepare("SELECT Photo FROM Tblitems where ItemID=:id");
 $stmt->bindparam(':id',$id);
 $stmt->execute();
-while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-  echo($row['Photo']);
-}
+$row=$stmt->fetch(PDO::FETCH_ASSOC);
+$photo=$row['Photo'];
+
+
 
 ?>
 
 
 
+<div class="container-fluid" >
+<div class="row">
+
+<div class="col-sm-6">
+<h1>Info</h1>
+
+</div>
+
+<div class="col-sm-6">
+<?php
+echo("<img src=$photo class='centre'>");
+
+?>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
