@@ -68,7 +68,7 @@ echo("<h1 style='Text-align:center'>$name</h1>")
 ?>
 
 <form action="onlineaddtobasket.php" method="post">
-<select>
+<select onchange="showprice(id)">
   <?php
   $stmt=$conn->prepare("SELECT TypeID, Size1, Size2 FROM Tbltype Where ItemID=:id");
   $stmt->bindparam(':id',$id);
@@ -94,11 +94,17 @@ echo("<img src=$photo class='centre'>");
 
 </div>
 
+</div>
 
 </div>
 
+<script>
+function showprice(ID){
+  
+}
 
-</div>
+</script>
+
 
 </body>
 

@@ -76,7 +76,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 print_r($categories);
 
 $_SESSION['Categories']=$categories;
-header("location:test2.php");
+header("location:shop.php");
 
 ?>
 
