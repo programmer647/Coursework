@@ -12,6 +12,8 @@ session_start();//starts the session so that session variables can be accessed
     <title>Shop</title><!--sets the title of the page-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><!--links to the bootstrap -->
     <link rel="stylesheet" href="style.css"/><!--links to the external style sheet-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -42,73 +44,48 @@ session_start();//starts the session so that session variables can be accessed
 
       <body>
 
+<button onclick="location.href='shop.php'" type="button" class="btn btn-secondary" action="shop.php">Back</button>
+
+<?php
+
+$id=$_GET['id'];
+
+
+$stmt=$conn->prepare("SELECT Photo FROM Tblitems where ItemID=:id");
+$stmt->bindparam(':id',$id);
+$stmt->execute();
+$row=$stmt->fetch(PDO::FETCH_ASSOC);
+$photo=$row['Photo'];
+
+
+
+?>
+
+
+
+<div class="container-fluid" >
 <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="dropdown">
-        <button id="sortBtn" class="btn dropbtn" onclick="sortDrop()">Sort</button>
-        <div id="sortDropdown" class="dropdown-content">
-            <form action="sortfilter.php" method="POST" id="sortForm" style="padding: 10%;">
-                <div class="text-center">
-                    <input id="order-asc" type="radio" value="ASC" name="order" required>
-                    <label id="order-asc" for="order-asc">Ascending
-                    </label>
-                    <input id="order-des" type="radio" value="DES" name="order" required>
-                    <label id="order-des" for="order-des">Descending
-                    </label>
-                </div>
-                <hr class="solid1">
-                <input id="price" type="radio" value="itemprice" name="sort" required>
-                <label for="price">Price</label><br>
-                <input id="name" type="radio" value="itemname" name="sort">
-                <lable for="name">Name</label>
-                <input type="hidden" name="type" value='sort'>
-                <input type="hidden" name="filter" value=<?php if(isset($category)){echo($category);}else{echo('none');}?>>
-                <br><div class="text-center"><input type="submit" value="Apply" class="btn btn-lg"></div>
-            </form>
-        </div>
-    </div>
+
+<div class="col-sm-6">
+<h1>Info</h1>
+
+
 </div>
 
-
-
-
-
-<div class="container-fluid">
+<div class="col-sm-6">
 <?php
-$stmt=$conn->prepare("SELECT * FROM Tblitems");//selects all the details of every item in the table
-$stmt->execute();
-
-$c=0;//variable that stores the number of columns that have been created. When it hits 6 which is the maximum it goes back to zero 
-//which starts a new row
-
-while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-    if ($c==0){
-        echo('<div class=row>');//creates a new row if the maximum number of columns for the previous one has been reached
-    }
-    echo('<div class="col-sm-2">');//creates a column which is the correct width for there to be 6 on the page
-    $photo=$row['Photo'];
-    echo("<a href=detaileduniform.php?id=".$row['ItemID']."><img src=$photo class='shop'></a>");//prints the photo of the item which has been retreived from the database. This 
-    //photo also acts as a link to take the user to the page with more details
-    echo("<center><h4>".$row['Name']."</h4></center>");//prints the name of the item underneath the photo
-    echo('</div>');//ends the div allowing another item to be created
-    $c=$c+1;//adds one to the column value
-    if ($c==6){//checks if the maximum number of columns has been reached
-        echo('</div>');//ends the current row if the max number of columns has been reached
-    }
-}
+echo("<img src=$photo class='centre'>");
 
 ?>
 
 </div>
 
 
-<script>
-    function sortDrop(){
-        document.getElementById("sortDropdown").classList.toggle("show");
-    }
+</div>
 
-</script>
 
+</div>
 
 </body>
+
 </html>

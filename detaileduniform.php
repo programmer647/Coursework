@@ -51,30 +51,45 @@ session_start();//starts the session so that session variables can be accessed
 $id=$_GET['id'];
 
 
-$stmt=$conn->prepare("SELECT Photo FROM Tblitems where ItemID=:id");
+$stmt=$conn->prepare("SELECT Name, Photo FROM Tblitems where ItemID=:id");
 $stmt->bindparam(':id',$id);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 $photo=$row['Photo'];
-
-
-
+$name=$row['Name'];
 ?>
-
-
 
 <div class="container-fluid" >
 <div class="row">
 
 <div class="col-sm-6">
-<h1>Info</h1>
+<?php
+echo("<h1 style='Text-align:center'>$name</h1>")
+?>
+
+<form action="onlineaddtobasket.php" method="post">
+<select>
+  <?php
+  $stmt=$conn->prepare("SELECT TypeID, Size1, Size2 FROM Tbltype Where ItemID=:id");
+  $stmt->bindparam(':id',$id);
+  $stmt->execute();
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    echo('<option value='.$row['TypeID'].'>'.$row['Size1'].', '.$row['Size2'].'</option>');
+  }
+  ?>
+
+</select>
+
+
+</form>
+
 
 </div>
 
 <div class="col-sm-6">
 <?php
 echo("<img src=$photo class='centre'>");
-
+;
 ?>
 
 </div>
