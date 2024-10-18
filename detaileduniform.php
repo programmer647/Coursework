@@ -67,8 +67,8 @@ $name=$row['Name'];
 echo("<h1 style='Text-align:center'>$name</h1>")
 ?>
 
-<form action="onlineaddtobasket.php" method="post">
-<select onchange="showprice(id)">
+<form action="onlineaddtobasket.php" method="get">
+<select onchange="showprice(this.value)">
   <?php
   $stmt=$conn->prepare("SELECT TypeID, Size1, Size2 FROM Tbltype Where ItemID=:id");
   $stmt->bindparam(':id',$id);
@@ -82,6 +82,10 @@ echo("<h1 style='Text-align:center'>$name</h1>")
 
 
 </form>
+
+<div id="price">
+
+</div>
 
 
 </div>
@@ -99,8 +103,13 @@ echo("<img src=$photo class='centre'>");
 </div>
 
 <script>
-function showprice(ID){
-  
+function showprice(str){
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload=function(){
+    document.getElementById("price").innerHTML = this.responseText;
+  }
+  xhttp.open("GET","getprice.php?q="+str);
+  xhttp.send();
 }
 
 </script>
