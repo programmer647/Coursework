@@ -94,8 +94,7 @@ $stmt->closeCursor();
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tbltype;
 CREATE TABLE Tbltype
 (TypeID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-Size1 VARCHAR(10) NOT NULL,
-Size2 VARCHAR(10) NOT NULL,
+Size VARCHAR(10) NOT NULL,
 ItemID INT(2) NOT NULL,
 Price FLOAT(5,2) NOT NULL
 )");
@@ -104,13 +103,13 @@ $stmt->closeCursor();
 
 
 
-$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size1,Size2,ItemID,Price)VALUES
-(NULL,'24','28',1, 33), 
-(NULL,'34','30', 1, 41),
-(NULL,'32','31', 2, 10),
-(NULL,'32','33', 2, 12),
-(NULL,'30-32','', 3, 13),
-(NULL,'34-36','', 3, 13)
+$stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size,ItemID,Price)VALUES
+(NULL,'24, 28',1, 33), 
+(NULL,'34, 30', 1, 41),
+(NULL,'32, 31', 2, 10),
+(NULL,'32, 33', 2, 12),
+(NULL,'30-32', 3, 13),
+(NULL,'34-36', 3, 13)
 ");//inserts all of the default data into the type table
 $stmt->execute();
 $stmt->closeCursor();
