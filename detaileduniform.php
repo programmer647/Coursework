@@ -70,11 +70,11 @@ echo("<h1 style='Text-align:center'>$name</h1>")
 <form action="onlineaddtobasket.php" method="get">
 <select onchange="showprice(this.value)">
   <?php
-  $stmt=$conn->prepare("SELECT TypeID, Size1, Size2 FROM Tbltype Where ItemID=:id");
+  $stmt=$conn->prepare("SELECT TypeID, Size FROM Tbltype Where ItemID=:id");
   $stmt->bindparam(':id',$id);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-    echo('<option value='.$row['TypeID'].'>'.$row['Size1'].', '.$row['Size2'].'</option>');
+    echo('<option value='.$row['TypeID'].'>'.$row['Size'].'</option>');
   }
   ?>
 
