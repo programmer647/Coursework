@@ -10,10 +10,12 @@ $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 echo("£".$row['Price']);
 
+$id=$_GET['q'];
+?>
 
-echo('<input type="hidden" name="TypeID" value=$_GET["q"]>');
+<input type="hidden" name="TypeID" value='<?php echo($id);?>'>
 
-
+<?php
 $total=0;
 $stmt=$conn->prepare("SELECT Stock from Tbluniform where TypeID=:typeid");
 $stmt->bindParam(":typeid",$_GET['q']);
@@ -22,15 +24,16 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $total=$total+$row['Stock'];
 }
 
-echo('</br>');
-
-echo('<label for="quantity">Quantity</label>');
-echo('<input type="number" id="quantity" name="quantity" min="1" max=$total>');
-
-echo('<input type="submit" value="Add to basket">');
-
-echo('</form>');
-
 ?>
+
+</br>
+
+<label for="quantity">Quantity</label>
+<input type="number" id="quantity" name="quantity" min="1" max="<?php echo($total);?>">
+
+<input type="submit" value="Add to basket">
+
+</form>
+
 
 
