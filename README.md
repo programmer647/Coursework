@@ -26,8 +26,7 @@ add to basket
 
 
 Things to ask for help about:
-manual checkout page - javascript for it to make different options appear
-ask Mr Cunniffe about table whether I should make another items table but have to redo the whole checkout system
+
 
 
 Random thoughts:
@@ -36,14 +35,11 @@ stock will be subtracted when the order is completed - allows for the possibilit
 maybe change hsm name and matron name in table to their email addresses as names might not be relevant. Or just get rid of it altogether
 might need to get rid of houses table
 if I get rid of houses table take new screenshots of tables which depend on it and then put them into the word document - i have already edited the code but the screenshots and description of the table would need to be changed
-maybe add pop up button to complete page in case someone presses it by accident
 need to fix CSS so that when the page is made smaller it still looks ok
+need to add validation where a user can’t add an item to their basket unless they are logged in
+maybe need to make a way where it saves your order so that you can go back to it
+change it so that user's can't have more items than there are available in their baskets - do this by subtracting it from the stock as soon as it is added to the basket
+
 
 need to go back to sign up page and change it so that it alerts and redirects instead of doing it on the page
 
-
-
-addtobasket page needs:
-uniformid
-
-maybe add something into addtobasket page to differentiate between manual entries and barcode entries
