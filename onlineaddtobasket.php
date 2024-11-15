@@ -2,7 +2,9 @@
 include_once("connection.php");
 session_start();
 
-print_r($_POST);
+array_map("htmlspecialchars",$_POST);//prevents SQL injection by making special characters in the post array not have any impact
+
+$date = date('Y-m-d');//sets the variable date to the current date
 
 if (!isset($_SESSION['orderid']))
 {
@@ -22,8 +24,6 @@ if (!isset($_SESSION['orderid']))
     }
 }
 
-
-
-
-
 ?> 
+
+
