@@ -140,7 +140,8 @@ $stmt->execute();
     echo("£".$total);
     ?>
 
-    
+    <button onclick="location.href='shop.php'" type="button" class="btn btn-secondary" action="shop.php">Continue Shopping</button>
+    <button onclick="location.href='onlinecheckout.php'" type="button" class="btn btn-secondary" action="checkoutbutton.php">Continue To Checkout</button>
 </div>
 
 
