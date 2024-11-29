@@ -47,14 +47,15 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 }
 }
 
-$stmt=$conn->prepare("SELECT Quantity FROM tblonlineorders WHERE TypeID=:typeid");
+$stmt=$conn->prepare("SELECT Quantity FROM tblonlineorders WHERE TypeID=:typeid and OrderID=:orderid");
 $stmt->bindParam(':typeid', $typeid);
+$stmt->bindParam(':orderid',$_SESSION['orderid']);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 if ($row!=[]){
     $stmt=$conn->prepare("UPDATE Tblonlineorders SET Quantity=:quantity WHERE TypeID=:typeid");
     $stmt->bindParam(':quantity', $quantity);
-    $stmt->bindParam('typeid',$typeid);
+    $stmt->bindParam(':typeid',$typeid);
     $stmt->execute();
 }
 else{
@@ -65,7 +66,6 @@ else{
     $stmt->execute();
 }
 
-print_r($_SESSION);
 $stmt=$conn->prepare("SELECT * FROM Tblorders where OrderID=:orderid");//selects the rows of the table where the typeID is equal to the typID searched for
 $stmt->bindParam(':orderid',$_SESSION['orderid']);
 $stmt->execute();
@@ -73,19 +73,77 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     $total=$row['Total'];
 }
 
-$total=$total+$price;//adds the price to the total for the orders table
+$total=$total+$price*($_POST['quantity']);//adds the price to the total for the orders table
 
 $stmt=$conn->prepare("UPDATE Tblorders SET Total=:total WHERE OrderID=:orderid");//updates the orders table to include the new total
 $stmt->bindParam(':total', $total);
-$stmt->bindParam('orderid',$_SESSION['orderid']);
+$stmt->bindParam(':orderid',$_SESSION['orderid']);
 $stmt->execute();
 
 ?> 
 
+<!DOCTYPE html>
 <html>
+        
+<head>
+    
+    <title>Shop</title><!--sets the title of the page-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><!--links to the bootstrap -->
+    <link rel="stylesheet" href="style.css"/><!--links to the external style sheet-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<!--creating the navbar-->
+<nav class="navbar navbar-fixed-top"><!--fixes the navbar to the top of the page-->
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li><a href="loggedouthome.php">Home</a></li>
+            <li><a href="about.php">About Us</a></li>
+            <li class="active"><a href="shop.php">Shop</a></li><!--sets the shop page to the active link so that it appears a different 
+            colour so that the user knows which page they are currently on-->
+            <li><a href="news.php">News</a></li>
+            <li><a href="faqs.php">FAQs</a></li>
+            <li><a href="uniformlists.php">Uniform Lists</a></li>
+            <?php
+            if (!isset($_SESSION['name'])){
+                echo("<li><a href='login.php'>Login/Sign up</a></li>");
+            }
+            else{
+                echo("<li><a href='account.php'>My Account</a></li>
+                <li><a href='logout.php'>Log out</a></li>");
+            }
+            ?>
+
+          </ul>
+        </div>
+      </nav>
+
+      <body>
+
+<div class="centered box white">
+    <h3>Basket</h3>
+    <?php
+    $stmt=$conn->prepare("SELECT Name as n, Size as s, Price as p, Quantity as q, Total as t FROM Tblonlineorders 
+    INNER JOIN tblorders ON tblonlineorders.OrderID=tblorders.OrderID
+    INNER JOIN tbltype ON tblonlineorders.TypeID=tbltype.TypeID
+    INNER JOIN tblitems ON tbltype.ItemID=tblitems.ItemID
+    WHERE tblonlineorders.OrderID=:orderid");
+    $stmt->bindParam(':orderid',$_SESSION['orderid']);
+    $stmt->execute();
+    echo("Name, Size, Price, Quantity</br>");
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+        echo($row['n'].", ".$row['s'].", £".$row['p'].", ".$row['q']."</br>");
+        $total=$row['t'];
+    }
+    echo("£".$total);
+    ?>
+
+    
+</div>
 
 
-
-
+</body>
 
 </html>
