@@ -21,20 +21,18 @@ echo("£".$total);
 <br>
 
 <h3>Delivery option</h3>
-<form>
-<input type="radio" name="option" value="home" id ="delivery" onclick=deliveryinformation()>
+<form action="onlinecheckout.php" method="POST">
+<input type="radio" name="option" value="home">
 <label for="home">Home Delivery</label></br>
-<input type="radio" name="option" value="collect" id ="delivery" onclick=deliveryinformation()>
+<input type="radio" name="option" value="collect">
 <label for="collect">Collect from store</label></br>
-<input type="radio" name="option" value="boarding" id ="delivery" onclick=deliveryinformation()>
+<input type="radio" name="option" value="boarding">
 <label for="boarding">Delivery to boarding house</label></br>
 
-
-
-
-<h3>Delivery Information</h3>
-Address Line 1:<input type="text" name="address1"><br>
-Address Line 2:<input type="text" name="address2"><br>
-Postcode:<input type="text" name="postcode"><br>
+<input type="submit" value="Checkout">
 
 </form>
+
+
+
+
