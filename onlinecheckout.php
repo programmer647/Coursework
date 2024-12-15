@@ -3,6 +3,11 @@ include_once("connection.php");
 session_start();
 
 $method=$_POST['option'];
+
+
+$_SESSION['method']=$_POST['option'];
+
+
 ?>
 <form action="checkoutprocess.php" method="POST">
 <?php

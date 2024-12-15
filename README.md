@@ -43,3 +43,7 @@ change it so that user's can't have more items than there are available in their
 
 need to go back to sign up page and change it so that it alerts and redirects instead of doing it on the page
 
+
+
+(might need to add something to orders table to be able to see if an order has been completed or not)
+(have edited the install file to put in the other information but need to check the lengths of things and update the writeup)

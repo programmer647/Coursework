@@ -15,7 +15,6 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     $total=$row['t'];
 }
 echo("£".$total);
-
 ?>
 
 <br>
@@ -32,6 +31,7 @@ echo("£".$total);
 <input type="submit" value="Checkout">
 
 </form>
+
 
 
 
