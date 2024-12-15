@@ -23,7 +23,8 @@ elseif ($method=="collect"){
 }
 
 elseif($method="boarding"){
-    $stmt=$conn->prepare("UPDATE Tblorders SET Pupilname=:name, Year=:year, Tutor=:Tutor, House=:house, Usercompleted=1 WHERE OrderID=:orderid");
+    echo("no");
+    $stmt=$conn->prepare("UPDATE Tblorders SET Pupilname=:name, Year=:year, Tutor=:tutor, House=:house, Usercompleted=1 WHERE OrderID=:orderid");
     $stmt->bindParam(':name', $_POST['name']);
     $stmt->bindParam(':year',$_POST['year']);
     $stmt->bindParam(':tutor',$_POST['tutor']);
