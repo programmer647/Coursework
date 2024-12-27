@@ -36,7 +36,9 @@ foreach($ordernums as $x){
     }
 }
 
-echo("<input type='submit' value='Submit'");
+echo("<input type='hidden' value=$id name='orderid'>");
+
+echo("<input type='submit' value='Submit'>");
 
 ?>
 
