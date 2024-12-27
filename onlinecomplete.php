@@ -15,8 +15,11 @@ if ($row['Deliveryoption']==1){
     $row=$stmt->fetch(PDO::FETCH_ASSOC);
     echo("<h3>Home delivery</h3>");
     echo("Address Line 1:".$row['AddressLine1']);
+    echo("<br>");
     echo("Address Line 2:".$row['AddressLine2']);
+    echo("<br>");
     echo("Postcode:".$row['Postcode']);
+    echo("<br>");
 }
 
 elseif($row['Deliveryoption']==2){
@@ -26,6 +29,7 @@ elseif($row['Deliveryoption']==2){
     $row=$stmt->fetch(PDO::FETCH_ASSOC);
     echo("<h3>Collection</h3>");
     echo("Email Address:".$row['Email']);
+    echo("<br>");
 }
 
 elseif($row['Deliveryoption']==3){
@@ -36,12 +40,20 @@ elseif($row['Deliveryoption']==3){
     echo("<h3>Delivery to boarding house</h3>");
     echo("Pupil name:".$row['Pupilname']);
     echo("Year:".$row['Year']);
+    echo("<br>");
     echo("Tutor:".$row['Tutor']);
+    echo("<br>");
     echo("House".$row['House']);
-
+    echo("<br>");
 }
 
-
-//1=home delivery, 2=collection, 3=boarding house
+echo("<a href='finalonlinecomplete.php?id=".$id."'>");
+echo("<button type='button'>Mark order as completed");
+echo("</button>");
+echo("</a>");
 
 ?>
+
+
+
+

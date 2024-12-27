@@ -39,6 +39,7 @@ need to fix CSS so that when the page is made smaller it still looks ok
 need to add validation where a user can’t add an item to their basket unless they are logged in
 maybe need to make a way where it saves your order so that you can go back to it
 change it so that user's can't have more items than there are available in their baskets - do this by subtracting it from the stock as soon as it is added to the basket
+change it so that the orders are prioritised by date created instead of by order number - actually this could already be ok because the order number which is first will have been created first but not necesserilly finished first
 
 
 need to go back to sign up page and change it so that it alerts and redirects instead of doing it on the page
