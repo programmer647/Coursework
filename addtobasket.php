@@ -62,7 +62,7 @@ $stmt->bindParam(":uniformid",$uniformid);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 print_r($row);
-$price=$row['Price'];
+$price=$row['p'];
 
 //SQL statement to select the total from the orders table
 $stmt=$conn->prepare("SELECT Total FROM Tblorders WHERE OrderID=:orderid");
@@ -70,17 +70,17 @@ $stmt->bindParam(":orderid",$_SESSION['orderid']);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 print_r($row);
-$tot=$row['Total']
-
+$tot=$row['Total'];
 $total=$tot+$price;
+echo($total);
 
 //statement to update the total in the table
-$stmt->$conn->prepare("UPDATE Tblorders SET Total=:total WHERE OrderID=:orderid");
+$stmt=$conn->prepare("UPDATE Tblorders SET Total=:total WHERE OrderID=:orderid");
 $stmt->bindParam(":total",$total);
 $stmt->bindParam(":orderid",$_SESSION['orderid']);
 $stmt->execute();
-
-
-
 ?>
+
+
+
 

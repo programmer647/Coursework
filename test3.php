@@ -1,8 +1,9 @@
 <?php
-$a=[];
+session_start();
+include_once("connection.php");
 
-if ($a==[]){
-    echo("yes");
-}
-
+$total=9.5;
+$stmt=$conn->prepare("UPDATE Tblorders SET Total=:total WHERE OrderID=1");
+$stmt->bindParam(":total",$total);
+$stmt->execute();
 ?>
