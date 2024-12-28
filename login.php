@@ -47,11 +47,6 @@ page when submitted-->
 </div>
 </div>
 
-
-
-
-
-
 </body><!--Ends the body section of the page-->
 
 </html><!--Marks the end of the document-->

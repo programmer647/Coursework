@@ -21,26 +21,24 @@ if ($stmt->rowCount()>0){
             $_SESSION['role']=$row['Role'];//sets the session variable role
             $_SESSION['id']=$row['UserID'];//sets the session variable ID
             $_SESSION['firstname']=$row['Forename'];//sets the session variable firstname
-            echo("Logged in");
+            echo ("<script>alert('Sign in successful')</script>");//alerts the user that they have signed in successfully
+            echo("<script>window.location.href='customerhome.php'</script>");//redirects the user back to the home page
         }else{
-            echo("Incorrect password");//prints "incorrect password" if the password is incorrect
+            echo ("<script>alert('Incorrect password')</script>");//alerts the user that the password is incorrect
+            echo("<script>window.location.href='login.php'</script>");//redirects the user back to the login page
         }
-
-
     }
 }
 
 else{
-    print("Incorrect username");//prints if the username isn't in the table
+    echo("<script>alert('Incorrect username')</script>");//alerts the user that the username is incorrect
+    echo("<script>window.location.href='login.php'</script>");//redirects the user back to the login page
 }
-
 
 $conn=null;
 ?>
 
-<script>
-    alert("Sign in successful");//creates an alert message which 
-    window.location.href = "customerhome.php";
-</script>
+
+
 
 
