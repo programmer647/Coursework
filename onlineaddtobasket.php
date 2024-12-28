@@ -8,7 +8,7 @@ $date = date('Y-m-d');//sets the variable date to the current date
 
 if (!isset($_SESSION['orderid']))
 {
-    $stmt=$conn->prepare("INSERT INTO Tblorders(UserID,Datecreated) Values(:userid,:datecreated)");
+    $stmt=$conn->prepare("INSERT INTO Tblorders(UserID,Datecreated,Online) Values(:userid,:datecreated,1)");
     $stmt->bindParam(':userid',$_SESSION['id']);
     $stmt->bindParam(':datecreated',$date);
     $stmt->execute();

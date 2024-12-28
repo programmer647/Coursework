@@ -7,7 +7,7 @@ $date = date('Y-m-d');
 
 if (!isset($_SESSION['orderid']))
 {
-    $stmt=$conn->prepare("INSERT INTO Tblorders(UserID,Datecreated,Datecompleted) Values(:userid,:datecreated,:datecompleted)");
+    $stmt=$conn->prepare("INSERT INTO Tblorders(UserID,Datecreated,Datecompleted,Online) Values(:userid,:datecreated,:datecompleted,0)");
     $stmt->bindParam(':userid',$_SESSION['id']);
     $stmt->bindParam(':datecreated',$date);
     $stmt->bindParam(':datecompleted',$date);

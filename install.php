@@ -51,6 +51,7 @@ Paid BOOLEAN NOT NULL,
 Usercompleted BOOLEAN NOT NULL, 
 Uniformready BOOLEAN NOT NULL,
 Completed BOOLEAN NOT NULL,
+Online BOOLEAN NOT NULL,
 Datecreated DATE NOT NULL,
 Datecompleted DATE Null
 )");
