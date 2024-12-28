@@ -1,4 +1,12 @@
 <?php
+//part to unset the session (will be removed later)
+session_start();
+session_unset();
+print_r($_SESSION);
+?>
+
+
+<?php
 //connecting to the database using the connection file
 include ("connection.php");
 
