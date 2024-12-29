@@ -22,7 +22,7 @@ include_once("connection.php");
 //name, size, price, quantity
 
 
-$stmt=$conn->prepare("SELECT tblitems.name as n, tbltype.size as s, tbltype.price as p, tblbasket.quantity as q, tblorders.OrderID FROM Tblorders
+$stmt=$conn->prepare("SELECT tblitems.name as n, tbltype.size as s, tbltype.price as p, tblbasket.quantity as q, tblorders.OrderID, tblbasket.new as new FROM Tblorders
 INNER JOIN Tblbasket on Tblbasket.OrderID=Tblorders.OrderID
 INNER JOIN Tbluniform on Tbluniform.UniformID=Tblbasket.UniformID
 INNER JOIN Tbltype on Tbltype.TypeID=Tbluniform.TypeID
@@ -33,7 +33,13 @@ $stmt->execute();
 echo("Name, Size, Price, Quantity");
 while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo("<br>");
-    echo($row['n'].', '.$row['s'].', '.$row['p'].', '.$row['q']);
+    if ($row['new']=1){
+        echo($row['n'].', '.$row['s'].', '.$row['p']*1.65.', '.$row['q']);
+    }
+    else{
+        echo($row['n'].', '.$row['s'].', '.$row['p'].', '.$row['q']);
+    }
+    
 }
 
 if (isset($_SESSION['orderid'])){
