@@ -4,10 +4,13 @@ include_once("connection.php");
 ?>
 
 <form action="addtobasket.php" method="POST">
-<label for="uniformid">Scan barcode:</label>
-<input type="number" name="barcode">
+<label for="barcode">Scan barcode:</label>
+<input type="number" name="barcode"><br>
+<label for="new">New?</label>
+<input type="checkbox" name="new" value="1">
 <br>
 <input type="submit" value="Add to basket">
+
 <br>
 </form>
 
@@ -33,12 +36,13 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo($row['n'].', '.$row['s'].', '.$row['p'].', '.$row['q']);
 }
 
+if (isset($_SESSION['orderid'])){
 $stmt=$conn->prepare("SELECT Total FROM Tblorders WHERE OrderID=:orderid");
 $stmt->bindParam(":orderid",$_SESSION['orderid']);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 echo("<br>");
 echo("Total: £".$row['Total']);
-
+}
 
 ?>

@@ -22,3 +22,5 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 <input type="submit" value="Show totals for this sale">
 
 </html>
+
+
