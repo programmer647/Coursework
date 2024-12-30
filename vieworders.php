@@ -21,7 +21,7 @@ include_once("connection.php");
 <div class="col-sm-6">
 <h2>Pending</h2>
 <?php
-$stmt=$conn->prepare("SELECT OrderID FROM Tblorders WHERE Usercompleted=1 AND Uniformready=0");
+$stmt=$conn->prepare("SELECT OrderID FROM Tblorders WHERE Usercompleted=1 AND Uniformready=0 AND Online=1");
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo("<a href='detailedorder.php?id=".$row['OrderID']."'>");
@@ -37,7 +37,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 <div class="col-sm-6">
 <h2>Ready for dispatch</h2>
 <?php
-$stmt=$conn->prepare("SELECT OrderID FROM Tblorders WHERE Usercompleted=1 AND Uniformready=1");
+$stmt=$conn->prepare("SELECT OrderID FROM Tblorders WHERE Usercompleted=1 AND Uniformready=1 AND Completed=0 AND Online=1");
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo("<a href='onlinecomplete.php?id=".$row['OrderID']."'>");
