@@ -1,46 +1,48 @@
-<html>
-  <head>
-    <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+<?php
+ 
+$dataPoints = array();
 
-      // Load the Visualization API and the piechart package.
-      google.charts.load('current', {'packages':['corechart']});
+include_once("connection.php");
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table, 
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-      // Create the data table.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Topping');
-      data.addColumn('number', 'Slices');
-      data.addRows([
-        ['Mushrooms', 10],
-        ['Onions', 1],
-        ['Olives', 1], 
-        ['Zucchini', 1],
-        ['Pepperoni', 2]
-      ]);
-
-      // Set chart options
-      var options = {'title':'How Much Pizza I Ate Last Night',
-                     'width':400,
-                     'height':300};
-
-      // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
+//Best practice is to create a separate file for handling connection to database
+	
+    $handle = $conn->prepare('SELECT UserID, Forename From tblusers'); 
+    $handle->execute(); 
+    $result = $handle->fetchAll(\PDO::FETCH_OBJ);
+    foreach($result as $row){
+        array_push($dataPoints, array("x"=> $row->Forename, "y"=> $row->UserID));
     }
-    </script>
-  </head>
+	$link = null;
+	
+?>
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Test chart"
+	},
+	data: [{
+		type: "pie", //change type to bar, line, area, pie, etc  
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</body>
+</html>    
 
-  <body>
-<!--Div that will hold the pie chart-->
-    <div id="chart_div" style="width:400; height:300"></div>
-  </body>
-</html>
+
+
