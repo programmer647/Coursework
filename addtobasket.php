@@ -1,9 +1,9 @@
 <?php
+//starts the session and connects to the database
 session_start();
 include_once("connection.php");
-print_r($_POST);
 
-$date = date('Y-m-d');
+$date = date('Y-m-d');//gets the current date
 
 if (!isset($_SESSION['orderid']))
 {
