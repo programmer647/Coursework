@@ -7,7 +7,6 @@ $itemdatapoints=array();
 $housetotals=array();
 $itemtotals=array();
 
-
 //selecting data for house pie chart
 
 //selects all the houses then creates an array with them in
@@ -35,33 +34,30 @@ foreach($housetotals as $x){//goes through each item in the house array
     array_push($housedatapoints, array("x"=> $x['Name'], "y"=> $x['Total']));//adds the name and total from the array to the datapoints for the chart
 }
 
-
-
 //selecting data for item pie chart
 
 //selects all the items then creates an array with them in it
 $stmt=$conn->prepare("SELECT ItemID, Name from Tblitems");
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-    $housetotals[$row['ItemID']]['Name']=$row['Name'];//sets the name of the item to the name retreived from the database
-    $housetotals[$row['ItemID']]['Total']=0;//sets the total for that item to zero
+    $itemtotals[$row['ItemID']]['Name']=$row['Name'];//sets the name of the item to the name retreived from the database
+    $itemtotals[$row['ItemID']]['Total']=0;//sets the total for that item to zero
 }
 
-
-
 //selects the number of each item sold
-$stmt=$conn->prepare("SELECT tbltype.ItemID, tblbasket.quantity FROM Tblorders
+$stmt=$conn->prepare("SELECT tbltype.ItemID, tblbasket.Quantity FROM Tblorders
 INNER JOIN Tblbasket on Tblbasket.OrderID=tblorders.OrderID
 INNER JOIN Tbluniform on Tblbasket.UniformID=Tbluniform.UniformID
 INNER JOIN Tbltype on tbltype.TypeID=tbluniform.TypeID 
 WHERE Tblorders.Completed=1");
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-    $itemtotals[$row['ItemID']]['Total']=$itemtotals[$row['HouseID']]['Total']+$row['Quantity'];//adds the items to the totals
+    $itemtotals[$row['ItemID']]['Total']=$itemtotals[$row['ItemID']]['Total']+$row['Quantity'];//adds the items to the totals
 }
 
-
-
+foreach($itemtotals as $x){//goes through each item in the house array
+    array_push($itemdatapoints, array("y"=> $x['Total'], "label"=> $x['Name']));//adds the name and total from the array to the datapoints for the chart
+}
 
 ?>
 <!DOCTYPE HTML>
@@ -89,22 +85,17 @@ var chart = new CanvasJS.Chart("housetotals", {
 
 	}]
 });
+chart.render();
 
-var chart = new CanvasJS.Chart("items", {
+var chart = new CanvasJS.Chart("itemtotals", {
 	animationEnabled: true,
 	exportEnabled: true,
 	theme: "light1", // "light1", "light2", "dark1", "dark2"
 	title:{
-		text: "Totals by house"
+		text: "Totals by item"
 	},
 	data: [{
-		type: "bar", //change type to bar, line, area, pie, etc  
-        indexLabel: "{x}",
-		indexLabelFontColor: "#36454F",
-		indexLabelFontSize: 18,
-		indexLabelFontWeight: "bolder",
-		showInLegend: true,
-		legendText: "{x}",
+		type: "column", //change type to bar, line, area, pie, etc  
 		dataPoints: <?php echo json_encode($itemdatapoints, JSON_NUMERIC_CHECK); ?>
     }]
 
@@ -115,7 +106,12 @@ chart.render();
 </script>
 </head>
 <body>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div id="housetotals" style="height: 370px; width: 100%;"></div>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+<div id="itemtotals" style="height: 370px; width: 100%;"></div>
 <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </body>
 </html>    
+
+
+

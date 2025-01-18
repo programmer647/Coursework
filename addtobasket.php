@@ -92,6 +92,22 @@ $stmt=$conn->prepare("UPDATE Tblorders SET Total=:total WHERE OrderID=:orderid")
 $stmt->bindParam(":total",$total);
 $stmt->bindParam(":orderid",$_SESSION['orderid']);
 $stmt->execute();
+
+//statement to retrieve how many of the item are left in stock
+$stmt=$conn->prepare("SELECT Quantity FROM Tbluniform WHERE UniformID=:uniformid");
+$stmt->bindParam(":uniformid",$uniformid);
+$stmt->execute();
+$row=$stmt->fetch(PDO::FETCH_ASSOC);
+$itemquantity=$row['Quantity'];
+
+$itemquantity=$itemquantity-1;
+
+//updates the uniform table with one subtracted from the quantity
+$stmt=$conn->prepare("UPDATE Tbluniform SET Quantity=:quantity");
+$stmt->bindParam(":quantity",$itemquantity);
+$stmt->execute();
+
+
 ?>
 
 
