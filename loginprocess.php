@@ -24,19 +24,23 @@ if ($stmt->rowCount()>0){
             echo ("<script>alert('Sign in successful')</script>");//alerts the user that they have signed in successfully
             echo("<script>window.location.href='customerhome.php'</script>");//redirects the user back to the home page
         }else{
-            echo ("<script>alert('Incorrect password')</script>");//alerts the user that the password is incorrect
+            echo ("<script>alert('Details incorrect')</script>");//alerts the user that the details they entered aren't correct
             echo("<script>window.location.href='login.php'</script>");//redirects the user back to the login page
         }
     }
 }
 
 else{
-    echo("<script>alert('Incorrect username')</script>");//alerts the user that the username is incorrect
+    echo("<script>alert('Details incorrect')</script>");//alerts the user that the details they entered aren't valid
     echo("<script>window.location.href='login.php'</script>");//redirects the user back to the login page
 }
 
 $conn=null;
 ?>
+
+
+
+
 
 
 
