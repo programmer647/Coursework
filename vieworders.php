@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("connection.php");
-if ($_SESSION['role']==1){
+if ($_SESSION['role']!=3){
     echo("<script>alert('You do not have permission to access this page');
     window.location.href = 'customerhome.php';</script>");
 }
