@@ -11,6 +11,8 @@ elseif ($_SESSION['role']==2) {
     header("Location:volunteerhome.php");
 }
 
+print_r($_SESSION);
+
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +44,7 @@ elseif ($_SESSION['role']==2) {
             <li><a href="emails.php">Send emails</a></li>
             <li><a href="publishnews.php">Publish News</a></li>
             <li><a href="manageaccounts.php">Manage Accounts</a></li>
+            <li><a href="logout.php">Log out</a></li>
 
           </ul>
         </div>
