@@ -2,6 +2,16 @@
 include_once("connection.php");//connects the page to the database
 session_start();//starts the session so that session variables can be accessed
 
+if(!isset($_SESSION['Categories'])){
+    $stmt=$conn->prepare("SELECT CategoryID FROM Tblcategories");
+    $stmt->execute();
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+    {
+        $categories[]=$row['CategoryID'];
+    }
+    $_SESSION['Categories']=$categories;
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -22,7 +22,14 @@
             <li><a href="faqs.php">FAQs</a></li>
             <li><a href="uniformlists.php">Uniform Lists</a></li>
             <li><a href="account.php">My Account</a></li>
-            <li><a href="logout.php">Log out</a></li>
+            <?php
+            if (!isset($_SESSION['UserID'])){
+              echo("<li><a href='login.php'>Log in/sign up</a><li>");
+            }
+            else{
+              echo("<li><a href='logout.php'>Log out</a></li>");
+            }
+            ?>
 
           </ul>
         </div>
