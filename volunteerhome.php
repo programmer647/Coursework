@@ -34,9 +34,9 @@ elseif ($_SESSION['role']==3) {
             <!--the code below provides the links to the different pages-->
             <li><a href="stock.php">Add Stock</a></li>
             <li><a href="generate.php">Generate Barcodes</a></li>
-            <li><a href="checkout.php">Checkout System</a></li>
+            <li><a href="checkoutbarcode.php">Checkout System</a></li>
             <li><a href="vieworders.php">View Orders</a></li>
-            <li><a href="account.php">My Account</a></li>
+            <!-- <li><a href="account.php">My Account</a></li> -->
             <li><a href="logout.php">Log Out</a></li>
 
           </ul>
@@ -61,9 +61,9 @@ echo("Hello ".$_SESSION['firstname']);
   <h3>What would you like to do?</h3>
   <p><a href="stock.php">Add stock</a></br>
   <a href="generate.php">Generate barcodes</a></br>
-  <a href="checkout.php">Use the checkout system</a></br>
+  <a href="checkoutbarcode.php">Use the checkout system</a></br>
   <a href="vieworders.php">View pending orders</a></br>
-  <a href="account.php">Manage your account</a>
+  <!-- <a href="account.php">Manage your account</a> -->
 </p>
 </div>
 </div> 

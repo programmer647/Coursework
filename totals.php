@@ -13,7 +13,7 @@ if ($_SESSION['role']==1){
         
 <head>
     
-    <title>View orders</title>
+    <title>View totals</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><!--links to the bootstrap -->
     <link rel="stylesheet" href="style.css"/><!--links to the external style sheet-->
 
@@ -47,15 +47,15 @@ if ($_SESSION['role']==1){
 <a href="showsaletotals.php">
    <button>View in Person Sale Totals</button>
 </a>
-
 <br>
-
 <a href="showonlinetotals.php">
    <button>View Online Totals</button>
 </a>
-
 <br>
-
 <a href="displaydata.php">
    <button>View Graphs</button>
 </a>
+
+
+
+

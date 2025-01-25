@@ -11,7 +11,7 @@ elseif ($_SESSION['role']==2) {
     header("Location:volunteerhome.php");
 }
 
-print_r($_SESSION);
+//print_r($_SESSION);
 
 ?>
 
@@ -36,13 +36,13 @@ print_r($_SESSION);
             <!--the code below provides the links to the different pages-->
             <li><a href="vieworders.php">View Orders</a></li>
             <li><a href="stock.php">Add Stock</a></li>
-            <li><a href="generate.php">Generate Barcodes</a></li>
-            <li><a href="checkout.php">Checkout System</a></li>
+            <!-- <li><a href="generate.php">Generate Barcodes</a></li> -->
+            <li><a href="checkoutbarcode.php">Checkout System</a></li>
             <li><a href="users.php">Add Users</a></li>
             <li><a href="totals.php">View Totals</a></li>
-            <li><a href="uniform.php">Edit/add uniform</a></li>
-            <li><a href="emails.php">Send emails</a></li>
-            <li><a href="publishnews.php">Publish News</a></li>
+            <!-- <li><a href="uniform.php">Edit/add uniform</a></li> -->
+            <!-- <li><a href="emails.php">Send emails</a></li> -->
+            <!-- <li><a href="publishnews.php">Publish News</a></li> -->
             <li><a href="manageaccounts.php">Manage Accounts</a></li>
             <li><a href="logout.php">Log out</a></li>
 
@@ -68,14 +68,14 @@ echo("Hello ".$_SESSION['firstname']);
   <h3>What would you like to do?</h3>
   <p><a href="vieworders.php">View pending orders</a></br>
     <a href="stock.php">Add stock</a></br>
-  <a href="generate.php">Generate barcodes</a></br>
-  <a href="checkout.php">Use the checkout system</a></br>
+  <!-- <a href="generate.php">Generate barcodes</a></br> -->
+  <a href="checkoutbarcode.php">Use the checkout system</a></br>
   <a href="users.php">Add users</a></br>
   <a href="totals.php">View totals</a></br>
-  <a href="uniform.php">Edit/add uniform</a></br>
-  <a href="emails.php">Send an email to the email list</a></br>
-  <a href="publishnews.php">Publish news</a></br>
-  <a href="account.php">Manage your account</a>
+  <!-- <a href="uniform.php">Edit/add uniform</a></br> -->
+  <!-- <a href="emails.php">Send an email to the email list</a></br> -->
+  <!-- <a href="publishnews.php">Publish news</a></br> -->
+  <a href="account.php">Manage accounts</a>
 </p>
 </div>
 </div> 

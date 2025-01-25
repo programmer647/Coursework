@@ -3,8 +3,6 @@
 include_once("connection.php");
 session_start();
 
-print_r($_POST);
-
 $orderid=$_POST['orderid'];
 unset($_POST['orderid']);
 
@@ -35,3 +33,5 @@ $stmt->bindParam(':orderid', $orderid);
 $stmt->execute();
 
 ?>
+
+<p>This order has now been completed</p>

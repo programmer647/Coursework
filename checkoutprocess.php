@@ -36,4 +36,11 @@ unset($_SESSION['method']);
 
 ?>
 
+<p>Thank you for your order<br>
+Please contact folssoundle@gmail.com to arrange payment. <br>
+On receipt of payment, your order will be available for collection/delivery.</p>
+
+<a href="shop.php"><button>Return to shop</button></a>
+
+
 

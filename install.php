@@ -90,6 +90,11 @@ Stock INT(2) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
+
+$stmt=$conn->prepare("ALTER TABLE tbluniform AUTO_INCREMENT = 10");
+$stmt->execute();
+
+
 $stmt = $conn->prepare("INSERT INTO Tbluniform(UniformID,TypeID,HouseID,Stock)VALUES
 (NULL,1,1,4), 
 (NULL,1,2,10), 

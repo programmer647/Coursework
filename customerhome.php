@@ -34,9 +34,9 @@ elseif ($_SESSION['role']==3) {
             <!--the code below provides the links to the different pages-->
             <li><a href="about.php">About Us</a></li>
             <li><a href="shop.php">Shop</a></li>
-            <li><a href="news.php">News</a></li>
-            <li><a href="faqs.php">FAQs</a></li>
-            <li><a href="uniformlists.php">Uniform Lists</a></li>
+            <!-- <li><a href="news.php">News</a></li> -->
+            <!-- <li><a href="faqs.php">FAQs</a></li> -->
+            <!-- <li><a href="uniformlists.php">Uniform Lists</a></li> -->
             <li><a href="account.php">My Account</a></li>
             <li><a href="logout.php">Log out</a></li>
 

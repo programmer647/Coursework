@@ -38,9 +38,9 @@ if (isset($_SESSION['role']))
             <!--the code below provides the links to the different pages-->
             <li><a href="about.php">About Us</a></li>
             <li><a href="shop.php">Shop</a></li>
-            <li><a href="news.php">News</a></li>
-            <li><a href="faqs.php">FAQs</a></li>
-            <li><a href="uniformlists.php">Uniform Lists</a></li>
+            <!-- <li><a href="news.php">News</a></li> -->
+            <!-- <li><a href="faqs.php">FAQs</a></li> -->
+            <!-- <li><a href="uniformlists.php">Uniform Lists</a></li> -->
             <li><a href="login.php">Login/Sign up</a></li>
 
           </ul>
