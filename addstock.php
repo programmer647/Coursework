@@ -8,8 +8,7 @@ if ($_SESSION['role']==1)//checks if the user is a customer
     header("Location:customerhome.php");//if the user is a customer not a volunteer or admin they are redirected to the home page
 }
 
-header("Location: stock.php");
-session_start();
+header("Location: stock.php");//sends the user back to teh stock page immediately 
 
 
 //selects the stock from the uniform table where the UniformID matches the barcode scanned
@@ -17,7 +16,7 @@ $stmt=$conn->prepare("SELECT Stock FROM tbluniform where UniformID=:id");
 $stmt->bindParam(':id',$_POST['barcode']);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
-$stock=$row['Stock'];
+$stock=$row['Stock'];//sets the variable stock to the value retreived from the database
 
 $stock=$stock+1;//adds one to the stock
 

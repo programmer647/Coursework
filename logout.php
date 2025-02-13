@@ -40,8 +40,7 @@ session_start();
 
 if(isset($_SESSION['name']))//checks if there is a user logged in
 {
-    unset($_SESSION['name']);//unsets the session variable name which stores the user's username
-    unset($_SESSION['role']);//unsets the session variable which stores the user's role
+    session_unset();//unsets all of the session variables
     echo("<h3>Logged out successfully</h3>");//displays a heading to let the user know they have been logged out
 }
 else{

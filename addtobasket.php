@@ -3,6 +3,10 @@
 session_start();
 include_once("connection.php");
 
+header("Location:checkoutbarcode.php");
+
+print_r($_POST);
+
 $date = date('Y-m-d');//gets the current date
 
 if (!isset($_SESSION['orderid']))
@@ -24,6 +28,7 @@ if (!isset($_SESSION['orderid']))
 $uniformid=$_POST['barcode'];
 if (isset($_POST['new'])){
     $new=$_POST['new'];
+
 }
 else{
     $new=0;
@@ -47,8 +52,9 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 }
 
 if ($quantity>1){//checks if the quantity is greater than 1 as when this is the case the table needs to be updated
-    $stmt=$conn->prepare("UPDATE Tblbasket SET Quantity=:quantity WHERE UniformID=:uniform and New=:new");
+    $stmt=$conn->prepare("UPDATE Tblbasket SET Quantity=:quantity WHERE UniformID=:uniform and New=:new and OrderID=:orderid");
     $stmt->bindParam(':quantity', $quantity);
+    $stmt->bindParam(':orderid',$_SESSION['orderid']);
     $stmt->bindParam(':uniform',$uniformid);
     $stmt->bindParam(':new',$new);
     $stmt->execute();
@@ -80,7 +86,7 @@ $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 print_r($row);
 $tot=$row['Total'];
-if ($new=1){
+if ($new==1){
     $total=$tot+($price*1.65);
 }
 else{
@@ -103,8 +109,9 @@ $itemquantity=$row['Stock'];
 $itemquantity=$itemquantity-1;
 
 //updates the uniform table with one subtracted from the quantity
-$stmt=$conn->prepare("UPDATE Tbluniform SET Stock=:Stock");
+$stmt=$conn->prepare("UPDATE Tbluniform SET Stock=:Stock WHERE UniformID=:uniformid");
 $stmt->bindParam(":Stock",$itemquantity);
+$stmt->bindParam(":uniformid",$uniformid);
 $stmt->execute();
 
 

@@ -101,6 +101,7 @@ $stmt = $conn->prepare("INSERT INTO Tbluniform(UniformID,TypeID,HouseID,Stock)VA
 (NULL,2,1,5), 
 (NULL,3,3,2),
 (NULL,3,1,9),
+(NULL,4,1,0),
 (NULL,5,2,3),  
 (NULL,6,3,6)
 ");//inserts all of the default data into the uniform table

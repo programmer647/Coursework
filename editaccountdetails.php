@@ -41,6 +41,7 @@ if ($_SESSION['role']!=3){
           </ul>
         </div>
       </nav>
+
 <?php
 $id=$_GET['id'];
 $_SESSION['EditID']=$id;
@@ -72,3 +73,5 @@ echo($row['Forename'].', '.$row['Surname']);
 <a href="deleteaccount.php">
     <button>Delete account</button>
 </a>
+
+

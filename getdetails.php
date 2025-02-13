@@ -35,5 +35,10 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
 </form>
 
+<?php
+if ($total==0){
+  echo("<h3>Out of stock</h3>");
+}
+?>
 
 

@@ -11,6 +11,9 @@ elseif ($_SESSION['role']==3) {
     header("Location:adminhome.php");
 }
 
+
+// print_r($_SESSION);
+
 ?>
 
 
@@ -37,7 +40,7 @@ elseif ($_SESSION['role']==3) {
             <!-- <li><a href="news.php">News</a></li> -->
             <!-- <li><a href="faqs.php">FAQs</a></li> -->
             <!-- <li><a href="uniformlists.php">Uniform Lists</a></li> -->
-            <li><a href="account.php">My Account</a></li>
+            <!-- <li><a href="account.php">My Account</a></li> -->
             <li><a href="logout.php">Log out</a></li>
 
           </ul>

@@ -11,7 +11,7 @@ elseif ($_SESSION['role']==2) {
     header("Location:volunteerhome.php");
 }
 
-//print_r($_SESSION);
+// print_r($_SESSION);
 
 ?>
 

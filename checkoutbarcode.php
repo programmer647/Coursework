@@ -31,7 +31,7 @@ $stmt->execute();
 echo("Name, Size, Price, Quantity");
 while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo("<br>");
-    if ($row['new']=1){
+    if ($row['new']==1){
         echo($row['n'].', '.$row['s'].', '.$row['p']*1.65.', '.$row['q']);
     }
     else{
