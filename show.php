@@ -16,7 +16,7 @@ WHERE Tblorders.Online=0 AND Tblorders.Datecompleted=:date");//selects all the i
 $stmt->bindParam(":date",$_POST['date']);
 $stmt->execute();
 while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-  if $row['n']=1{
+  if ($row['n']=1){
     $housetotals[$row['house']]=$housetotals[$row['house']]+($row['q']*$row['p']*1.65);
   }
   else{

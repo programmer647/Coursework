@@ -33,8 +33,6 @@ if ($_SESSION['role']!=3){
             <li><a href="users.php">Add Users</a></li>
             <li class="active"><a href="totals.php">View Totals</a></li>
             <li><a href="uniform.php">Edit/add uniform</a></li>
-            <li><a href="emails.php">Send emails</a></li>
-            <li><a href="publishnews.php">Publish News</a></li>
             <li><a href="manageaccounts.php">Manage Accounts</a></li>
             <li><a href="logout.php">Log out</a></li>
 

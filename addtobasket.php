@@ -84,13 +84,12 @@ $stmt=$conn->prepare("SELECT Total FROM Tblorders WHERE OrderID=:orderid");
 $stmt->bindParam(":orderid",$_SESSION['orderid']);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
-print_r($row);
-$tot=$row['Total'];
-if ($new==1){
-    $total=$tot+($price*1.65);
+$tot=$row['Total'];//sets a variable for the order total
+if ($new==1){//checks if the item is new or not
+    $total=$tot+($price*1.65);//if the item is new the price added to the total is multiplied by 1.65 as this is the amount that new items are increased by 
 }
 else{
-    $total=$tot+$price;
+    $total=$tot+$price;//if the item isn't new the normal price is added to the total
 }
 
 //statement to update the total in the table
@@ -104,11 +103,11 @@ $stmt=$conn->prepare("SELECT Stock FROM Tbluniform WHERE UniformID=:uniformid");
 $stmt->bindParam(":uniformid",$uniformid);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
-$itemquantity=$row['Stock'];
+$itemquantity=$row['Stock'];//sets the variable itemquantity equal to the stock
 
-$itemquantity=$itemquantity-1;
+$itemquantity=$itemquantity-1;//subtracts one from the number of the item in stock
 
-//updates the uniform table with one subtracted from the quantity
+//updates the uniform table with the new stock level
 $stmt=$conn->prepare("UPDATE Tbluniform SET Stock=:Stock WHERE UniformID=:uniformid");
 $stmt->bindParam(":Stock",$itemquantity);
 $stmt->bindParam(":uniformid",$uniformid);

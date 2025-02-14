@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!--sets the document to a HTML one-->
 <html>
         
+
 <head>
     
     <title>About Us</title>
@@ -23,11 +24,11 @@
             <li><a href="uniformlists.php">Uniform Lists</a></li>
             <li><a href="account.php">My Account</a></li>
             <?php
-            if (!isset($_SESSION['UserID'])){
-              echo("<li><a href='login.php'>Log in/sign up</a><li>");
+            if (!isset($_SESSION['UserID'])){//checks if the user is logged in
+              echo("<li><a href='login.php'>Log in/sign up</a><li>");//if the user is not logged on it displays the login button
             }
             else{
-              echo("<li><a href='logout.php'>Log out</a></li>");
+              echo("<li><a href='logout.php'>Log out</a></li>");//if the user is logged in the log out button is displayed instead
             }
             ?>
 
@@ -40,7 +41,7 @@
 
 
 
-      <div id="carousel" class="carousel slide" data-ride="carousel">
+<div id="carousel" class="carousel slide" data-ride="carousel">
 
 <!--sets the caroousel up-->
 <ol class="carousel-indicators">
@@ -73,6 +74,7 @@
     </div>
   </div>
 
+<!--creates the buttons used to switch between photos on the carousel-->
   <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -88,12 +90,12 @@
 
 
 <div class="container-fluid box">
-
+  <!--place to display information about the shop-->
     <h3><center>About Us<center></h3>
     <p>Text about the shop here</p>
   
-<div class="row">
-<div class="col-sm-7 box">
+<div class="row"><!--uses the bootstrap grid system to create a row-->
+<div class="col-sm-7 box"><!--creates a large box on the left of the page-->
     <h3>Contact Us</h3>
     <p>Email: folssoundle@gmail.com</p>
     <h4>Privacy and Returns Policies</h4>
@@ -101,7 +103,7 @@
     <a href="returns.pdf">Returns Policy></a></p>
   </div>
 
-  <div class="col-sm-5 box">
+  <div class="col-sm-5 box"><!--creates a smaller box on the right of the page-->
     <h3>Upcoming Sales</h3>
     <p>Example: xx/xx/xx</br>
     Example: xx/xx/xx </p>

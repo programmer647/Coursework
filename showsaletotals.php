@@ -57,9 +57,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
  }
 ?>
 </select>
-
+<input type="submit" value="Show totals">
 </form>
 
-<input type="submit" value="Show totals">
+
 
 </html>
