@@ -11,7 +11,6 @@ try {
     //connects to the database by passing in the variables
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //echo "Connected successfully"; //displays message if the database has been connected to successfuly
     }
 
 catch(PDOException $e)
@@ -19,3 +18,5 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();//if the connection fails then it prints a message
     }
 ?>
+
+

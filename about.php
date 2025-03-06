@@ -38,9 +38,6 @@
 
       <body>
 
-
-
-
 <div id="carousel" class="carousel slide" data-ride="carousel">
 
 <!--sets the caroousel up-->
