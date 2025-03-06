@@ -82,10 +82,6 @@
   </a>
 </div>
 
-
-
-
-
 <div class="container-fluid box">
   <!--place to display information about the shop-->
     <h3><center>About Us<center></h3>
