@@ -26,7 +26,6 @@ elseif ($_SESSION['role']==2) {//if the user is a volunteer they are redirected 
 
 </head>
 
-
 <!--creating the navbar-->
 <nav class="navbar navbar-fixed-top"><!--fixes the navbar to the top of the page-->
         <div class="container-fluid">
@@ -51,7 +50,6 @@ elseif ($_SESSION['role']==2) {//if the user is a volunteer they are redirected 
       </nav>
 
 <body>
-
 
 <div class="box box-centre">
 <h1>
@@ -96,3 +94,4 @@ echo("Hello ".$_SESSION['firstname']);//prints a message saying hello to the use
 
 </body>
 </html>
+

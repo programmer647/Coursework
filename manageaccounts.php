@@ -42,8 +42,6 @@ if ($_SESSION['role']!=3){//checks if the user is a committee member
         </div>
       </nav>
 
-
-
 <?php
 $stmt=$conn->prepare("SELECT UserID, Forename, Surname, Username, Role FROM Tblusers");//selects every user from the user table
 $stmt->execute();

@@ -1,12 +1,4 @@
 <?php
-//part to unset the session (will be removed later)
-session_start();
-session_unset();
-print_r($_SESSION);
-?>
-
-
-<?php
 //connecting to the database using the connection file
 include ("connection.php");
 
@@ -30,7 +22,6 @@ $stmt = $conn->prepare("INSERT INTO Tblusers(UserID,Forename,Surname,Username,Pa
 $stmt->bindParam(':hp', $hashed_password); //makes the password in the default data the hashed password
 $stmt->execute();
 $stmt->closeCursor();
-
 
 //creating orders table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblorders;
@@ -109,8 +100,6 @@ $stmt->execute();
 $stmt->closeCursor();
 
 
-
-
 //creating type table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tbltype;
 CREATE TABLE Tbltype
@@ -121,7 +110,6 @@ Price FLOAT(5,2) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
-
 
 
 $stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size,ItemID,Price)VALUES
@@ -222,5 +210,7 @@ Address VARCHAR(30) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 
-
 ?>
+
+
+

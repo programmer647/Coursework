@@ -9,14 +9,15 @@ print_r($_POST);
 
 $date = date('Y-m-d');//gets the current date
 
-if (!isset($_SESSION['orderid']))
-{
+if (!isset($_SESSION['orderid']))//checks if the OrderID session variable is already set
+{//if the OrderID session variable isn't set a new order is inserted into the table
     $stmt=$conn->prepare("INSERT INTO Tblorders(UserID,Datecreated,Datecompleted,Online) Values(:userid,:datecreated,:datecompleted,0)");
     $stmt->bindParam(':userid',$_SESSION['id']);
     $stmt->bindParam(':datecreated',$date);
     $stmt->bindParam(':datecompleted',$date);
     $stmt->execute();
     
+    //selects the highest OrderID in the table and sets it as the OrderID session variable
     $stmt=$conn->prepare("SELECT MAX(OrderID) from Tblorders");
     $stmt->execute();
     while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
@@ -25,12 +26,12 @@ if (!isset($_SESSION['orderid']))
     }
 }
 
-$uniformid=$_POST['barcode'];
-if (isset($_POST['new'])){
+$uniformid=$_POST['barcode'];//sets the variable UniformID to the barcode which has been scanned
+if (isset($_POST['new'])){//checks if the new button has been selected on the page and if it has sets the variable to 1
     $new=$_POST['new'];
 
 }
-else{
+else{//if the new button wasn't selected it sets the new variable to 0
     $new=0;
 }
 
@@ -44,7 +45,6 @@ $stmt->bindParam(':new',$new);
 $stmt->execute();
 while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
 {
-    print_r($row);
     $q=$row['Quantity'];
     if ($q>0){
         $quantity=$q+1;

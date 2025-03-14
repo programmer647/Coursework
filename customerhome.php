@@ -11,9 +11,6 @@ elseif ($_SESSION['role']==3) {
     header("Location:adminhome.php");
 }
 
-
-// print_r($_SESSION);
-
 ?>
 
 
