@@ -6,7 +6,7 @@ include_once("connection.php");//connects the page to the database
 <form action="addtobasket.php" method="POST"><!--creates the form which takes in the barcode and sets the submit method to post so that the data
 goes to the next page in the form of a post array-->
 <label for="barcode">Scan barcode:</label><!--creates a label for the barcode input-->
-<input type="number" name="barcode"><br><!--creates an input box for the barcode and then a line break-->
+<input type="number" name="barcode" required><br><!--creates an input box for the barcode and then a line break-->
 <label for="new">New?</label><!--creates a label for the check box for whether an item is new or not-->
 <input type="checkbox" name="new" value="1"><!--creates the checkbox which is clicked if the item is new-->
 <br>
@@ -40,6 +40,7 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     
 }
 
+//checks if the OrderID session variable has been set
 if (isset($_SESSION['orderid'])){
 $stmt=$conn->prepare("SELECT Total FROM Tblorders WHERE OrderID=:orderid");
 $stmt->bindParam(":orderid",$_SESSION['orderid']);

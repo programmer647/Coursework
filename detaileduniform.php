@@ -69,6 +69,7 @@ echo("<h1 style='Text-align:center'>$name</h1>")
 
 <form method="get">
 <select onchange="getdetails(this.value)">
+  <option value="">Select size</option>
   <?php
   $stmt=$conn->prepare("SELECT TypeID, Size FROM Tbltype Where ItemID=:id");
   $stmt->bindparam(':id',$id);
@@ -79,12 +80,6 @@ echo("<h1 style='Text-align:center'>$name</h1>")
   ?>
 
 </select>
-
-
-
-
-
-
 
 </form>
 

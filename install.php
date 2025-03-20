@@ -37,7 +37,7 @@ Email VARCHAR(255) NOT NULL,
 Pupilname VARCHAR(30) NOT NULL,
 Year INT(2) NOT NULL,
 Tutor VARCHAR(30) NOT NULL,
-House VARCHAR(30) NOT NULL,
+HouseID INT(2) NOT NULL,
 Paid BOOLEAN NOT NULL,
 Usercompleted BOOLEAN NOT NULL, 
 Uniformready BOOLEAN NOT NULL,
@@ -82,8 +82,8 @@ Stock INT(2) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 
-$stmt=$conn->prepare("ALTER TABLE tbluniform AUTO_INCREMENT = 10");
-$stmt->execute();
+// $stmt=$conn->prepare("ALTER TABLE tbluniform AUTO_INCREMENT = 10");
+// $stmt->execute();
 
 
 $stmt = $conn->prepare("INSERT INTO Tbluniform(UniformID,TypeID,HouseID,Stock)VALUES
@@ -94,7 +94,11 @@ $stmt = $conn->prepare("INSERT INTO Tbluniform(UniformID,TypeID,HouseID,Stock)VA
 (NULL,3,1,9),
 (NULL,4,1,0),
 (NULL,5,2,3),  
-(NULL,6,3,6)
+(NULL,6,3,6),
+(NULL,7,2,1),
+(NULL,8,1,2),
+(NULL,9,2,5),
+(NULL,10,3,4)
 ");//inserts all of the default data into the uniform table
 $stmt->execute();
 $stmt->closeCursor();
@@ -118,7 +122,11 @@ $stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size,ItemID,Price)VALUES
 (NULL,'32, 31', 2, 10),
 (NULL,'32, 33', 2, 12),
 (NULL,'30-32', 3, 13),
-(NULL,'34-36', 3, 13)
+(NULL,'34-36', 4, 13),
+(NULL,'30', 5, 71),
+(NULL,'Standard', 6, 35),
+(NULL,'32', 7, 9),
+(NULL,'16', 8, 9)
 ");//inserts all of the default data into the type table
 $stmt->execute();
 $stmt->closeCursor();
@@ -135,7 +143,7 @@ Photo VARCHAR(50) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 
-
+//inserting default data into items table
 $stmt = $conn->prepare("INSERT INTO Tblitems(ItemID,Name,CategoryID,Photo)VALUES
 (NULL,'Culottes', 1, 'Images/Culottes.jpg'), 
 (NULL,'Trousers', 3, 'Images/Trousers.jpg'),
@@ -145,7 +153,7 @@ $stmt = $conn->prepare("INSERT INTO Tblitems(ItemID,Name,CategoryID,Photo)VALUES
 (NULL,'Rucksack', 10, 'Images/rucksack.jpg'),
 (NULL,'Culotte Uniform Pink Shirt', 7, 'Images/culottepinkshirt.jpg'),
 (NULL,'Trouser Blue Shirt', 8, 'Images/trouserblueshirt.jpg')
-");//inserts all of the default data into the type table
+");//inserts all of the default data into the items table
 $stmt->execute();
 $stmt->closeCursor();
 
@@ -191,6 +199,8 @@ Name VARCHAR(20) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor(); 
+
+
 $stmt = $conn->prepare("INSERT INTO Tblhouse(HouseID,Name)VALUES
 (NULL,'FOLSS'), 
 (NULL,'Dryden'),
