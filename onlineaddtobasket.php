@@ -6,7 +6,8 @@ array_map("htmlspecialchars",$_POST);//prevents SQL injection by making special 
 
 $date = date('Y-m-d');//sets the variable date to the current date
 
-if (isset($_SESSION['UserID'])){
+
+if (isset($_SESSION['id'])){
 
     if (!isset($_SESSION['orderid']))
     {

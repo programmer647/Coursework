@@ -12,29 +12,28 @@ $_SESSION['method']=$_POST['option'];
 if ($method=="home"){
     ?>
     <form action="checkoutprocess.php" method="POST">
-        Address line 1:<input type="text" name="addressline1" required><br>
-        Address line 2:<input type="text" name="addressline2" required><br>
-        Postcode:<input type="text" name="postcode" required><br>
+        Address line 1:<input type="text" name="addressline1"><br>
+        Address line 2:<input type="text" name="addressline2"><br>
+        Postcode:<input type="text" name="postcode" ><br>
     <?php
 }
 
 elseif ($method=="collect"){
     ?>
     <p>Please enter your email so that the FOLSS team can be in touch to confirm your delivery time</p>
-    <form action="checkoutprocess.php" method="POST" required>
-        Email address:<input type="text" name="email" required><br>
+    <form action="checkoutprocess.php" method="POST">
+        Email address:<input type="text" name="email"><br>
     <?php
 }
 
 elseif($method="boarding"){
     ?>
     <form action="checkoutprocess.php" method="POST">
-        Pupil name:<input type="text" name="name" required><br>
-        Pupil year group:<input type="text" name="year" required><br>
-        Pupil's tutor:<input type="text" name="tutor" required><br>
-        House:
-        <select name="house" required>
-        <option value="">Select house</option>
+        Pupil name:<input type="text" name="name"><br>
+        Pupil year group:<input type="text" name="year"><br>
+        Pupil's tutor:<input type="text" name="tutor"><br>
+        Boarding house:
+        <select name="house">
         <?php
         $stmt=$conn->prepare("SELECT * FROM Tblhouse");
         $stmt->execute();
@@ -42,7 +41,8 @@ elseif($method="boarding"){
             echo("<option value=".$row['HouseID'].">".$row['Name']."</option>");
         }
         ?>
-        </select><br>
+        </select>
+        <br>
     <?php
 }
 

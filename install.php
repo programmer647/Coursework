@@ -44,10 +44,20 @@ Uniformready BOOLEAN NOT NULL,
 Completed BOOLEAN NOT NULL,
 Online BOOLEAN NOT NULL,
 Datecreated DATE NOT NULL,
-Datecompleted DATE Null
+Datecompleted DATE NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
+
+//inserting default data into orders table
+$stmt = $conn->prepare("INSERT INTO Tblorders(OrderID,Total,UserID,Deliveryoption,AddressLine1,AddressLine2,Postcode,Email,Pupilname,Year,Tutor,HouseID,Paid,Usercompleted,Uniformready,Completed,Online,Datecreated,Datecompleted)VALUES
+(NULL,170,1,2,NULL,NULL,NULL,'test@test.com',NULL,NULL,NULL,NULL,1,1,0,0,1,2024-03-20,NULL),
+(NULL,124,1,3,NULL,NULL,NULL,NULL,'John Smith',11,'Mr Cunniffe',3,1,1,0,0,1,2024-03-17,NULL),
+(NULL,146,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,1,1,1,0,2024-02-01,2024-02-01)
+");
+$stmt->execute();
+$stmt->closeCursor();
+
 
 //creating basket table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblbasket;
@@ -60,6 +70,19 @@ New VARCHAR(10) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 
+
+//inserting default data into basket table
+$stmt = $conn->prepare("INSERT INTO Tblbasket(OrderID,UniformID,Quantity,New)VALUES
+(3,2,2,0),
+(3,11,1,0),
+(3,8,1,0)
+");
+$stmt->execute();
+$stmt->closeCursor();
+
+
+
+
 //creating online orders table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblonlineorders;
 CREATE TABLE Tblonlineorders
@@ -69,6 +92,22 @@ Quantity INT(2) NOT NULL
 )");
 $stmt->execute();
 $stmt->closeCursor();
+
+//inserting default data into online orders table
+$stmt = $conn->prepare("INSERT INTO Tblonlineorders(OrderID,TypeID,Quantity)VALUES
+(1,2,2),
+(1,8,1),
+(1,9,3),
+(1,5,2),
+(2,3,4),
+(2,6,1),
+(2,7,1)
+");
+$stmt->execute();
+$stmt->closeCursor();
+
+
+
 
 
 //creating uniform table
@@ -82,10 +121,10 @@ Stock INT(2) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 
-// $stmt=$conn->prepare("ALTER TABLE tbluniform AUTO_INCREMENT = 10");
-// $stmt->execute();
+$stmt=$conn->prepare("ALTER TABLE tbluniform AUTO_INCREMENT = 10");
+$stmt->execute();
 
-
+//inserting default data into uniform table
 $stmt = $conn->prepare("INSERT INTO Tbluniform(UniformID,TypeID,HouseID,Stock)VALUES
 (NULL,1,1,4), 
 (NULL,1,2,10), 
@@ -115,7 +154,7 @@ Price FLOAT(5,2) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 
-
+//inserting default data into type table
 $stmt = $conn->prepare("INSERT INTO Tbltype(TypeID,Size,ItemID,Price)VALUES
 (NULL,'24, 28',1, 33), 
 (NULL,'34, 30', 1, 41),
@@ -159,8 +198,6 @@ $stmt->closeCursor();
 
 
 
-
-
 //creating categories table
 $stmt=$conn->prepare("DROP TABLE IF EXISTS Tblcategories;
 CREATE TABLE Tblcategories
@@ -172,7 +209,7 @@ Year VARCHAR(20) NOT NULL
 $stmt->execute();
 $stmt->closeCursor();
 
-
+//inserting default data into categories table
 $stmt = $conn->prepare("INSERT INTO Tblcategories(CategoryID,Uniform,Type, Year)VALUES
 (NULL,'Culotte','School','All'), 
 (NULL,'Culotte','Sport','All'),
@@ -200,9 +237,9 @@ Name VARCHAR(20) NOT NULL
 $stmt->execute();
 $stmt->closeCursor(); 
 
-
+//inserting default data into house table
 $stmt = $conn->prepare("INSERT INTO Tblhouse(HouseID,Name)VALUES
-(NULL,'FOLSS'), 
+(NULL,'LSS'), 
 (NULL,'Dryden'),
 (NULL,'Laundimer')
 ");//inserts all of the default data into the houses table

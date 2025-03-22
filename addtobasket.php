@@ -12,14 +12,15 @@ $stmt->bindParam(':uniformid',$_POST['barcode']);
 $stmt->execute();
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 if ($row['count(*)']!=0){
-    if (!isset($_SESSION['orderid']))//checks if the OrderID session variable is already set
+    if (!isset($_SESSION['orderid'])){//checks if the OrderID session variable is already set
     //if the OrderID session variable isn't set a new order is inserted into the table
     $stmt=$conn->prepare("INSERT INTO Tblorders(UserID,Datecreated,Datecompleted,Online) Values(:userid,:datecreated,:datecompleted,0)");
     $stmt->bindParam(':userid',$_SESSION['id']);
     $stmt->bindParam(':datecreated',$date);
     $stmt->bindParam(':datecompleted',$date);
     $stmt->execute();
-    
+    }
+
     //selects the highest OrderID in the table and sets it as the OrderID session variable
     $stmt=$conn->prepare("SELECT MAX(OrderID) from Tblorders");
     $stmt->execute();
